@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyperdex Photography — Fine Art Landscape Prints</title>
+<title>Hyperdex Photography — Fine Art Landscape Prints from Queenstown, NZ</title>
+<meta name="description" content="Gallery-grade fine art landscape prints from Queenstown, New Zealand. Handframed in Australia and shipped ready to hang. Free shipping Australia-wide.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -176,13 +178,56 @@ footer{border-top:4px solid var(--black);padding:28px 32px;display:flex;flex-wra
 .footer-brand{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--black)}
 .footer-note{font-size:10px;letter-spacing:.06em;color:var(--g70)}
 
-@media(max-width:599px){
-  nav{height:auto;padding:12px 20px}
-  .nav-links{display:none}
-  .section{padding:52px 20px}
-  .hero{min-height:80vh;padding:70px 20px 50px}
-  .payid-highlight{flex-direction:column;gap:10px}
-}
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-bottom:0}
+@media(min-width:600px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+.gallery-item{overflow:hidden;aspect-ratio:4/3;cursor:pointer;position:relative}
+.gallery-item.tall{aspect-ratio:3/4}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-item .overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s}
+.gallery-item:hover .overlay{background:rgba(0,0,0,0.15)}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:24px;font-size:32px;color:white;cursor:pointer;background:none;border:none;line-height:1}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);font-size:28px;color:white;cursor:pointer;background:none;border:none;padding:12px;opacity:.7}
+.lightbox-prev{left:16px}
+.lightbox-next{right:16px}
+.lightbox-prev:hover,.lightbox-next:hover{opacity:1}
+
+/* FAQ */
+.faq-list{border:1px solid var(--g90)}
+.faq-item{border-bottom:1px solid var(--g90)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;background:var(--white);border:none;padding:20px 24px;font-size:15px;font-weight:600;color:var(--black);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q:hover{background:var(--stone)}
+.faq-icon{font-size:20px;color:var(--g70);flex-shrink:0;transition:transform .2s;font-weight:300;line-height:1}
+.faq-a{display:none;padding:0 24px 20px;font-size:14px;line-height:1.8;color:var(--g50);font-family:Georgia,serif}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
+/* DELIVERY TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;max-width:600px;margin:0 auto}
+@media(min-width:600px){.timeline{flex-direction:row;align-items:flex-start}}
+.tl-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:0 12px}
+.tl-step::after{content:"";position:absolute;right:-50%;top:20px;width:100%;height:1px;background:var(--g90)}
+@media(max-width:599px){.tl-step::after{display:none}}
+.tl-step:last-child::after{display:none}
+.tl-dot{width:40px;height:40px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:12px;flex-shrink:0;font-family:Georgia,serif}
+.tl-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:4px}
+.tl-desc{font-size:12px;font-style:italic;color:var(--g50);line-height:1.5}
+
+/* MOBILE STICKY CTA */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--black);color:var(--white);text-align:center;padding:16px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+.mobile-cta:hover{background:var(--gold)}
+@media(max-width:599px){.mobile-cta{display:block}}
+body{padding-bottom:0}
+@media(max-width:599px){body{padding-bottom:56px}}
+
+
 </style>
 </head>
 <body>
@@ -196,8 +241,8 @@ footer{border-top:4px solid var(--black);padding:28px 32px;display:flex;flex-wra
     <li><a href="#sizes">Sizes</a></li>
     <li><a href="#papers">Paper</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#frames">Frames</a></li>
-    <li><a href="#order">Order</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#payment">Payment</a></li>
   </ul>
   <a href="order-form.html" class="nav-order">Place an Order</a>
@@ -397,10 +442,119 @@ footer{border-top:4px solid var(--black);padding:28px 32px;display:flex;flex-wra
     <div class="payment-item"><span class="payment-icon">🧾</span><div class="payment-title">GST included</div><div class="payment-desc">All prices include GST. A tax invoice will be provided with your order confirmation.</div></div>
     <div class="payment-item"><span class="payment-icon">↩️</span><div class="payment-title">Satisfaction guarantee</div><div class="payment-desc">If your print arrives damaged or faulty, get in touch and I'll make it right.</div></div>
     <div class="payment-item"><span class="payment-icon">❌</span><div class="payment-title">No cancellations</div><div class="payment-desc">Each print is made to order. Cancellations cannot be accepted once production has begun.</div></div>
-    <div class="payment-item"><span class="payment-icon">💬</span><div class="payment-title">Questions?</div><div class="payment-desc">Message me on <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="color:var(--black)">Facebook</a> — happy to help before you commit.</div></div>
+    <div class="payment-item"><span class="payment-icon">💬</span><div class="payment-title">Questions?</div><div class="payment-desc">Message on <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="color:var(--black)">Facebook</a> or <a href="https://wa.me/61481248449" target="_blank" style="color:var(--black)">WhatsApp</a> — happy to help before you commit.</div></div>
   </div>
 </div>
 </div>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<div class="section" id="gallery" style="padding-bottom:0">
+  <div class="sec-header"><span class="sec-num">07</span><h2 class="sec-title"><strong>The</strong> <em>Collection</em></h2><div class="sec-rule"></div></div>
+  <p class="sec-desc">A selection of available prints. Each image is available in any size and paper type. Message on Facebook to discuss a specific shot.</p>
+</div>
+<div class="gallery-grid">
+  <div class="gallery-item" onclick="openLightbox(0)"><img src="images/1.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item tall" onclick="openLightbox(1)"><img src="images/4.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(2)"><img src="images/5.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item tall" onclick="openLightbox(3)"><img src="images/7.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(4)"><img src="images/10.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(5)"><img src="images/11.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(6)"><img src="images/12.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+</div>
+<div style="text-align:center;padding:28px 24px;background:var(--stone);border-top:1px solid var(--g90)">
+  <p style="font-family:Georgia,serif;font-size:14px;font-style:italic;color:var(--g50);margin-bottom:16px">More images available — message on Facebook to enquire about a specific scene.</p>
+  <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);padding-bottom:2px">View more on Facebook →</a>
+</div>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<div style="background:var(--stone)">
+<div class="section" id="faq">
+  <div class="sec-header"><span class="sec-num">08</span><h2 class="sec-title"><strong>Frequently</strong> <em>Asked</em></h2><div class="sec-rule"></div></div>
+  <p class="sec-desc">Everything you need to know before placing your order.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I see the photo before it's printed? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Yes — I'm happy to share a high-resolution preview of your chosen image cropped to your selected size before printing begins. Just mention it when you place your order.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you ship outside Australia? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Currently I ship within Australia only. If you're interested in international shipping, feel free to message me on Facebook and I'll see what I can arrange.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long does production and delivery take? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Once full payment is confirmed, your print is produced and framed within 3–5 business days. Delivery across Australia takes a further 3–5 business days, so total time is typically 7–10 business days from payment.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What if my print arrives damaged? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Every order is carefully packaged for safe delivery. In the rare case your print arrives damaged, contact me immediately with a photo and I'll organise a replacement at no cost to you.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I request a custom size or crop? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Absolutely. While the standard sizes are A4 through A0, I can discuss custom dimensions. Just message me on Facebook before placing your order and we'll work something out.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I give this as a gift? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Yes — prints make a beautiful gift. Let me know when ordering and I can include a gift message card and ensure the packaging is presentation-ready.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which paper type do you recommend for beginners? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Enhanced Matte is our most popular choice and a great starting point. It looks stunning in any lighting, has a luxurious feel, and suits most home interiors beautifully.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DELIVERY TIMELINE -->
+<div class="section" id="delivery">
+  <div class="sec-header"><span class="sec-num">09</span><h2 class="sec-title"><strong>Delivery</strong> <em>Timeline</em></h2><div class="sec-rule"></div></div>
+  <p class="sec-desc">From the moment you pay to the moment it's on your wall — here's what to expect.</p>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-dot">1</div>
+      <div class="tl-label">Order confirmed</div>
+      <div class="tl-desc">Payment received via PayID. Production begins same day.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">2</div>
+      <div class="tl-label">Printing</div>
+      <div class="tl-desc">Your image is printed on gallery-grade paper using 12-colour Epson inks.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">3</div>
+      <div class="tl-label">Framing</div>
+      <div class="tl-desc">Handframed in Australia in your chosen finish with mat and UV glazing.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">4</div>
+      <div class="tl-label">Dispatched</div>
+      <div class="tl-desc">Securely packaged and dispatched within 3–5 business days of payment.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">5</div>
+      <div class="tl-label">Delivered</div>
+      <div class="tl-desc">Arrives at your door ready to hang. Total: 7–10 business days.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox2()">×</button>
+  <button class="lightbox-prev" onclick="prevPhoto(event)">&#8592;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="nextPhoto(event)">&#8594;</button>
+</div>
+
+<!-- MOBILE STICKY CTA -->
+<a href="order-form.html" class="mobile-cta">Place an Order</a>
 
 <footer>
   <span class="footer-brand">Hyperdex Photography</span>
@@ -410,6 +564,15 @@ footer{border-top:4px solid var(--black);padding:28px 32px;display:flex;flex-wra
 <script>
 function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
 function swP(t,btn){document.querySelectorAll(".price-toggle button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".ppanel").forEach(p=>p.classList.remove("active"));document.getElementById("pp-"+t).classList.add("active");}
+function toggleFaq(btn){var item=btn.parentElement;item.classList.toggle("open");}
+var photos=["images/1.jpg","images/4.jpg","images/5.jpg","images/7.jpg","images/10.jpg","images/11.jpg","images/12.jpg"];
+var currentPhoto=0;
+function openLightbox(i){currentPhoto=i;document.getElementById("lightbox-img").src=photos[i];document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
+function closeLightbox(e){if(e.target===document.getElementById("lightbox"))closeLightbox2();}
+function closeLightbox2(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}
+function prevPhoto(e){e.stopPropagation();currentPhoto=(currentPhoto-1+photos.length)%photos.length;document.getElementById("lightbox-img").src=photos[currentPhoto];}
+function nextPhoto(e){e.stopPropagation();currentPhoto=(currentPhoto+1)%photos.length;document.getElementById("lightbox-img").src=photos[currentPhoto];}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLightbox2();if(e.key==="ArrowLeft")prevPhoto(e);if(e.key==="ArrowRight")nextPhoto(e);});
 </script>
 </body>
 </html>
