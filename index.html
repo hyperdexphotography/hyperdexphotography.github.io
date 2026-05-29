@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 /* HERO */
 .hero{position:relative;height:92vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
 .hero-bg{position:absolute;inset:0}
-.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center center;opacity:0;transition:opacity 1.5s ease}
 .hero-slide.active{opacity:1}
 .hero-dots{position:absolute;bottom:24px;right:32px;display:flex;gap:8px;z-index:3}
 .hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background .3s;border:none;padding:0}
@@ -270,9 +270,9 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg">
-    <div class="hero-slide active" style="background-image:url('38.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('43.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('40.jpg')"></div>
+    <div class="hero-slide active" style="background-image:url('38.jpg');background-position:center center"></div>
+    <div class="hero-slide" style="background-image:url('43.jpg');background-position:center 30%"></div>
+    <div class="hero-slide" style="background-image:url('40.jpg');background-position:center center"></div>
   </div>
   <div class="hero-dots">
     <button class="hero-dot active" onclick="goSlide(0)"></button>
