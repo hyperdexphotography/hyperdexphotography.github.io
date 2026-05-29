@@ -36,7 +36,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* HERO */
 .hero{position:relative;height:92vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
-.hero-bg{position:absolute;inset:0;background:url('38.jpg') center/cover no-repeat}
+.hero-bg{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease}
+.hero-slide.active{opacity:1}
+.hero-dots{position:absolute;bottom:24px;right:32px;display:flex;gap:8px;z-index:3}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background .3s;border:none;padding:0}
+.hero-dot.active{background:var(--white)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.1) 60%,transparent 100%)}
 .hero-content{position:relative;z-index:2;padding:48px 48px 60px;max-width:700px}
 @media(max-width:599px){.hero-content{padding:28px 20px 40px}}
@@ -262,7 +267,16 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <div class="hero-slide active" style="background-image:url('38.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('43.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('40.jpg')"></div>
+  </div>
+  <div class="hero-dots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot" onclick="goSlide(1)"></button>
+    <button class="hero-dot" onclick="goSlide(2)"></button>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Queenstown, New Zealand</p>
@@ -357,7 +371,7 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
     <div class="price-thead c4"><div class="price-th">Size</div><div class="price-th" style="text-align:right">Lustre</div><div class="price-th" style="text-align:right">Matte</div><div class="price-th" style="text-align:right">Cotton</div></div>
     <div class="price-row c4"><div><div class="price-size">A4</div><div class="price-dim">210 × 297 mm</div></div><div class="price-val">$149</div><div class="price-val">$169</div><div class="price-val">$189</div></div>
     <div class="price-row c4 pop"><div><div class="price-size">A3 <span class="price-tag">Popular</span></div><div class="price-dim">297 × 420 mm</div></div><div class="price-val">$199</div><div class="price-val">$219</div><div class="price-val">$249</div></div>
-    <div class="price-row c4 pop"><div><div class="price-size">A2 <span class="price-tag">Popular</span></div><div class="price-dim">420 × 594 mm</div></div><div class="price-val">$299</div><div class="price-val">$329</div><div class="price-val">$369</div></div>
+    <div class="price-row c4 pop"><div><div class="price-size">A2 <span class="price-tag">★ Most Popular</span></div><div class="price-dim">420 × 594 mm</div></div><div class="price-val">$299</div><div class="price-val">$329</div><div class="price-val">$369</div></div>
     <div class="price-row c4"><div><div class="price-size">A1</div><div class="price-dim">594 × 841 mm</div></div><div class="price-val">$419</div><div class="price-val">$449</div><div class="price-val">$499</div></div>
     <div class="price-row c4"><div><div class="price-size">A0</div><div class="price-dim">841 × 1189 mm</div></div><div class="price-val">$649</div><div class="price-val">$699</div><div class="price-val">$799</div></div>
   </div>
@@ -537,6 +551,21 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 </footer>
 
 <script>
+// Hero slideshow
+var slideIndex = 0;
+var slides = document.querySelectorAll('.hero-slide');
+var dots = document.querySelectorAll('.hero-dot');
+function goSlide(n) {
+  slides[slideIndex].classList.remove('active');
+  dots[slideIndex].classList.remove('active');
+  slideIndex = n;
+  slides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
+function nextSlide() {
+  goSlide((slideIndex + 1) % slides.length);
+}
+setInterval(nextSlide, 5000);
 function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
 function toggleFaq(btn){btn.parentElement.classList.toggle("open");}
 var photos=["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg","images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg","images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg","images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg"];
