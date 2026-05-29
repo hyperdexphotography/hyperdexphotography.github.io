@@ -295,6 +295,37 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
     btn.disabled = false;
   }
 });
+// Prefill from URL params
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('image')) {
+    document.getElementById('fimage').value = decodeURIComponent(params.get('image'));
+  }
+  if (params.get('print_type')) {
+    var type = params.get('print_type') === 'Framed Print' ? 'paper' : 'canvas';
+    document.getElementById('ftype').value = type;
+    // Trigger size population
+    var sizeEl = document.getElementById('fsize');
+    var paperField = document.getElementById('paperField');
+    sizeEl.innerHTML = '<option value="">— Select —</option>';
+    if (type === 'paper') {
+      ['A4','A3','A2','A1','A0'].forEach(function(s){
+        sizeEl.innerHTML += '<option value="'+s+'">'+s+'</option>';
+      });
+      paperField.style.display = 'block';
+    }
+    if (params.get('size')) {
+      sizeEl.value = params.get('size');
+    }
+  }
+  // Show prefilled notice
+  if (params.get('image')) {
+    var notice = document.createElement('div');
+    notice.style.cssText = 'background:#F2F0EC;border:1px solid #E4E1DB;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#4A4640;font-style:italic';
+    notice.textContent = '✓ Details prefilled from your selected print. Review and complete your details below.';
+    document.querySelector('.card').insertAdjacentElement('beforebegin', notice);
+  }
+})();
 </script>
 </body>
 </html>
