@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Place an Order — Hyperdex Photography</title>
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#F8F7F5;color:#0C0C0C;font-size:15px;line-height:1.6}
@@ -145,7 +146,7 @@ h1 em{font-style:italic;font-weight:400;color:#7A7874}
       <div class="success-payid-num">0481 248 449</div>
       <div class="success-ref" id="successRef"></div>
     </div>
-    <p>Delivery in 7–10 business days from payment confirmation.<br>Questions? Message on <a href="https://www.facebook.com/hyperdexphotography" target="_blank">Facebook</a>.</p>
+    <p>Delivery in 7–10 business days from payment confirmation.<br>Questions? <a href="https://wa.me/61481248449" target="_blank">WhatsApp</a> or <a href="https://www.facebook.com/hyperdexphotography" target="_blank">Facebook</a>.</p>
   </div>
 
 </div>
@@ -261,7 +262,21 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
         print_type: typeLabel, size: sizeLabel,
         paper_type: paperLabel, frame_finish: frame,
         image_description: image, special_requests: notes || 'None',
-        total_price: total
+        total_price: total,
+        _replyto: email,
+        _subject: 'Order Received — Hyperdex Photography',
+        _autoresponse: 'Hi ' + name + ',\n\nThank you for your order with Hyperdex Photography!\n\nHere is a summary of what you ordered:\n\n' +
+          '  Print Type: ' + typeLabel + '\n' +
+          '  Size: ' + sizeLabel + '\n' +
+          '  Paper: ' + paperLabel + '\n' +
+          '  Frame: ' + frame + '\n' +
+          '  Total: ' + total + '\n\n' +
+          'To confirm your order, please make full payment via PayID:\n\n' +
+          '  PayID: 0481 248 449\n' +
+          '  Reference: ' + name + '\n\n' +
+          'Once payment is received, production will begin and your print will be delivered within 7-10 business days.\n\n' +
+          'If you have any questions, feel free to message me on Facebook: facebook.com/hyperdexphotography\n\n' +
+          'Thank you,\nHyperdex Photography'
       })
     });
     if (res.ok) {
