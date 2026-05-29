@@ -273,14 +273,7 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg">
-    <div class="hero-slide active"><img src="38.jpg" alt="Home office print"></div>
-    <div class="hero-slide"><img src="43.jpg" alt="Bedroom print" style="object-position:center 30%"></div>
-    <div class="hero-slide"><img src="40.jpg" alt="Living room print"></div>
-  </div>
-  <div class="hero-dots">
-    <button class="hero-dot active" onclick="goSlide(0)"></button>
-    <button class="hero-dot" onclick="goSlide(1)"></button>
-    <button class="hero-dot" onclick="goSlide(2)"></button>
+    <div class="hero-slide active"><img src="63.jpg" alt="Living room print"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -570,21 +563,7 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 </footer>
 
 <script>
-// Hero slideshow
-var slideIndex = 0;
-var slides = document.querySelectorAll('.hero-slide');
-var dots = document.querySelectorAll('.hero-dot');
-function goSlide(n) {
-  slides[slideIndex].classList.remove('active');
-  dots[slideIndex].classList.remove('active');
-  slideIndex = n;
-  slides[slideIndex].classList.add('active');
-  dots[slideIndex].classList.add('active');
-}
-function nextSlide() {
-  goSlide((slideIndex + 1) % slides.length);
-}
-setInterval(nextSlide, 5000);
+
 function openMockup(src){var lb=document.getElementById('mockup-lb');document.getElementById('mockup-lb-img').src=src;lb.style.display='flex';document.body.style.overflow='hidden';}
 function closeMockup(){document.getElementById('mockup-lb').style.display='none';document.body.style.overflow='';}
 function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
