@@ -5,265 +5,237 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Place an Order — Hyperdex Photography</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-:root{
-  --black:#0C0C0C;--white:#FFFFFF;--off:#F8F7F5;--g90:#E8E6E2;--g70:#B0ADA8;--g50:#7A7874;--g30:#4A4845;
-  --serif:Georgia,serif;--sans:Arial,sans-serif;--cond:"Arial Narrow",Arial,sans-serif;
-}
-body{background:var(--off);color:var(--black);font-family:var(--sans);font-size:15px;line-height:1.6}
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(255,255,255,0.96);border-bottom:1px solid var(--g90);flex-wrap:wrap;gap:10px}
-.nav-brand{display:flex;flex-direction:column;gap:2px}
-.nav-br{font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);text-decoration:none}
-.nav-fb{font-family:var(--cond);font-size:10px;letter-spacing:.08em;color:var(--g50);text-decoration:none}
-.nav-fb:hover{color:var(--black)}
-.nav-back{font-family:var(--cond);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g50);text-decoration:none;border:1px solid var(--g90);padding:8px 16px}
-.nav-back:hover{color:var(--black);border-color:var(--black)}
-.page{max-width:680px;margin:0 auto;padding:48px 24px 80px}
-.page-hd{margin-bottom:40px}
-.page-eyebrow{font-family:var(--cond);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--g50);margin-bottom:12px}
-.page-ttl{font-family:var(--serif);font-size:clamp(32px,6vw,52px);font-weight:700;line-height:1;color:var(--black);margin-bottom:10px}
-.page-ttl em{font-style:italic;font-weight:400;color:var(--g50)}
-.page-sub{font-size:14px;color:var(--g50);line-height:1.7}
-.card{background:var(--white);border:1px solid var(--g90);padding:32px 28px;margin-bottom:20px}
-.card-ttl{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--black);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--g90)}
-.field{margin-bottom:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#F8F7F5;color:#0C0C0C;font-size:15px;line-height:1.6}
+nav{background:#fff;border-bottom:1px solid #E8E6E2;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:10}
+.nav-brand a{display:block;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#0C0C0C}
+.nav-brand small{display:block;font-size:10px;color:#7A7874;text-decoration:none}
+.nav-brand small a{color:#7A7874;text-decoration:none}
+.back-btn{font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#7A7874;border:1px solid #E8E6E2;padding:8px 16px}
+.page{max-width:640px;margin:0 auto;padding:40px 20px 80px}
+h1{font-family:Georgia,serif;font-size:36px;font-weight:700;margin-bottom:6px}
+h1 em{font-style:italic;font-weight:400;color:#7A7874}
+.subtitle{font-size:14px;color:#7A7874;margin-bottom:32px;line-height:1.7}
+.card{background:#fff;border:1px solid #E8E6E2;padding:24px;margin-bottom:16px}
+.card-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7A7874;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #E8E6E2}
+.field{margin-bottom:16px}
 .field:last-child{margin-bottom:0}
-label{display:block;font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:8px}
-label span{color:var(--g70);font-weight:400;text-transform:none;letter-spacing:0}
-input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;padding:12px 14px;border:1px solid var(--g90);background:var(--white);font-family:var(--sans);font-size:14px;color:var(--black);appearance:none;-webkit-appearance:none;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--black)}
-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
-textarea{resize:vertical;min-height:100px}
-.price-preview{background:var(--off);border:1px solid var(--g90);padding:20px 24px;margin-bottom:20px}
-.price-preview-ttl{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g70);margin-bottom:12px}
-.price-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--g90)}
-.price-row:last-child{border-bottom:none;padding-top:12px;margin-top:4px}
-.price-label{font-family:var(--cond);font-size:12px;color:var(--g50)}
-.price-val{font-family:var(--serif);font-size:16px;color:var(--black)}
-.price-total .price-label{font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--black)}
-.price-total .price-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--black)}
-.payid-box{background:var(--white);border:1px solid var(--g90);padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
-.payid-icon{font-size:28px;flex-shrink:0}
-.payid-ttl{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:4px}
-.payid-num{font-family:var(--serif);font-size:22px;color:var(--black)}
-.payid-note{font-size:12px;color:var(--g50);margin-top:4px}
-.submit-btn{width:100%;padding:16px;background:var(--black);color:var(--white);border:none;font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
-.submit-btn:hover{background:#333}
-.note{font-size:12px;font-style:italic;color:var(--g70);text-align:center;margin-top:12px;line-height:1.6}
-.success{display:none;background:var(--white);border:1px solid var(--g90);padding:40px 28px;text-align:center}
-.success-icon{font-size:40px;margin-bottom:16px}
-.success-ttl{font-family:var(--serif);font-size:26px;font-style:italic;color:var(--black);margin-bottom:10px}
-.success-txt{font-size:14px;color:var(--g50);line-height:1.7;margin-bottom:20px}
-.success-payid{background:var(--off);padding:16px 20px;margin:20px 0;text-align:left}
-.success-payid-ttl{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g70);margin-bottom:6px}
-.success-payid-num{font-family:var(--serif);font-size:24px;color:var(--black)}
-.success-ref{font-family:var(--cond);font-size:11px;color:var(--g50);margin-top:4px}
+.field label{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4A4845;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid #E8E6E2;background:#fff;font-family:Arial,sans-serif;font-size:14px;color:#0C0C0C;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#0C0C0C}
+.field textarea{resize:vertical;min-height:80px}
+.field select{cursor:pointer}
+#paperField{display:none}
+.summary{background:#fff;border:1px solid #E8E6E2;padding:20px;margin-bottom:16px;display:none}
+.summary-title{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7A7874;margin-bottom:12px}
+.summary-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E6E2;font-size:13px;color:#7A7874}
+.summary-total{display:flex;justify-content:space-between;padding-top:12px}
+.summary-total span:first-child{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.summary-total span:last-child{font-family:Georgia,serif;font-size:22px}
+.payid{background:#fff;border:1px solid #E8E6E2;padding:18px 20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:14px}
+.payid-icon{font-size:24px;margin-top:2px}
+.payid-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A7874;margin-bottom:4px}
+.payid-number{font-family:Georgia,serif;font-size:22px;margin-bottom:2px}
+.payid-note{font-size:12px;color:#7A7874}
+.submit-btn{width:100%;padding:15px;background:#0C0C0C;color:#fff;border:none;font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+.submit-btn:disabled{background:#888;cursor:not-allowed}
+.fine-print{font-size:12px;color:#7A7874;text-align:center;margin-top:10px;font-style:italic}
+.success{display:none;background:#fff;border:1px solid #E8E6E2;padding:40px 24px;text-align:center}
+.success h2{font-family:Georgia,serif;font-size:28px;font-style:italic;margin-bottom:10px}
+.success p{font-size:14px;color:#7A7874;line-height:1.7;margin-bottom:16px}
+.success-payid{background:#F8F7F5;padding:16px;margin:16px 0;text-align:left}
+.success-payid-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A7874;margin-bottom:4px}
+.success-payid-num{font-family:Georgia,serif;font-size:24px}
+.success-ref{font-size:12px;color:#7A7874;margin-top:4px}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-brand">
-    <a href="index.html" class="nav-br">Hyperdex Photography</a>
-    <a href="https://www.facebook.com/hyperdexphotography" target="_blank" class="nav-fb">📘 facebook.com/hyperdexphotography</a>
+    <a href="index.html">Hyperdex Photography</a>
+    <small><a href="https://www.facebook.com/hyperdexphotography" target="_blank">📘 facebook.com/hyperdexphotography</a></small>
   </div>
-  <a href="index.html" class="nav-back">← Back to Price List</a>
+  <a href="index.html" class="back-btn">← Back to Price List</a>
 </nav>
 
 <div class="page">
-  <div class="page-hd">
-    <p class="page-eyebrow">Queenstown, New Zealand</p>
-    <h1 class="page-ttl">Place an <em>Order</em></h1>
-    <p class="page-sub">Fill in your details below and I'll be in touch to confirm your order. Full payment via PayID is required before production begins.</p>
-  </div>
+  <h1>Place an <em>Order</em></h1>
+  <p class="subtitle">Fill in your details below. Full payment via PayID is required before production begins.</p>
 
-  <div id="orderForm">
+  <div id="formArea">
 
     <div class="card">
-      <div class="card-ttl">Your Details</div>
-      <div class="field">
-        <label>Full Name</label>
-        <input type="text" id="fname" placeholder="Jane Smith">
-      </div>
-      <div class="field">
-        <label>Email Address</label>
-        <input type="email" id="femail" placeholder="jane@example.com">
-      </div>
-      <div class="field">
-        <label>Phone Number <span>(optional)</span></label>
-        <input type="tel" id="fphone" placeholder="04xx xxx xxx">
-      </div>
-      <div class="field">
-        <label>Delivery Address</label>
-        <input type="text" id="faddress" placeholder="Street, Suburb, State, Postcode">
-      </div>
+      <div class="card-title">Your Details</div>
+      <div class="field"><label>Full Name *</label><input type="text" id="fname" placeholder="Jane Smith"></div>
+      <div class="field"><label>Email Address *</label><input type="email" id="femail" placeholder="jane@example.com"></div>
+      <div class="field"><label>Phone (optional)</label><input type="tel" id="fphone" placeholder="04xx xxx xxx"></div>
+      <div class="field"><label>Delivery Address *</label><input type="text" id="faddress" placeholder="Street, Suburb, State, Postcode"></div>
     </div>
 
     <div class="card">
-      <div class="card-ttl">Print Options</div>
+      <div class="card-title">Print Options</div>
       <div class="field">
-        <label>Print Type</label>
-        <select id="ftype" onchange="typeChanged()">
-          <option value="">— Select —</option>
+        <label>Print Type *</label>
+        <select id="ftype">
+          <option value="">— Select print type —</option>
           <option value="paper">Framed Print</option>
           <option value="canvas">Framed Canvas</option>
         </select>
       </div>
       <div class="field">
-        <label>Size</label>
-        <select id="fsize" onchange="calcPrice()">
-          <option value="">— Select —</option>
+        <label>Size *</label>
+        <select id="fsize">
+          <option value="">— Select print type first —</option>
         </select>
       </div>
       <div class="field" id="paperField">
-        <label>Paper Type</label>
-        <select id="fpaper" onchange="calcPrice()">
-          <option value="">— Select —</option>
-          <option value="lustre">Lustre Pro (270gsm · Pearl Finish)</option>
-          <option value="matte">Enhanced Matte (230gsm · Flat Matte) ★ Most Popular</option>
-          <option value="cotton">Cotton Rag Archival (280gsm · 100% Cotton)</option>
+        <label>Paper Type *</label>
+        <select id="fpaper">
+          <option value="">— Select paper type —</option>
+          <option value="lustre">Lustre Pro — 270gsm · Pearl Finish</option>
+          <option value="matte">Enhanced Matte — 230gsm · Flat Matte ★ Popular</option>
+          <option value="cotton">Cotton Rag Archival — 280gsm · 100% Cotton</option>
         </select>
       </div>
       <div class="field">
-        <label>Frame Finish</label>
+        <label>Frame Finish *</label>
         <select id="fframe">
-          <option value="">— Select —</option>
-          <option value="matte-black">Matte Black</option>
-          <option value="white">White</option>
-          <option value="natural-oak">Natural Oak</option>
-          <option value="light-oak">Light Oak</option>
+          <option value="">— Select frame finish —</option>
+          <option value="Matte Black">Matte Black</option>
+          <option value="White">White</option>
+          <option value="Natural Oak">Natural Oak</option>
+          <option value="Light Oak">Light Oak</option>
         </select>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-ttl">Your Image</div>
-      <div class="field">
-        <label>Image / Scene Description <span>(which photo do you want printed?)</span></label>
-        <textarea id="fimage" placeholder="e.g. The Remarkables at sunset, the one with the reflection in the lake..."></textarea>
-      </div>
-      <div class="field">
-        <label>Any Special Requests <span>(optional)</span></label>
-        <textarea id="fnotes" placeholder="e.g. gift wrapping, specific cropping preferences..."></textarea>
-      </div>
+      <div class="card-title">Your Image</div>
+      <div class="field"><label>Which photo do you want? *</label><textarea id="fimage" placeholder="e.g. The Remarkables at sunset, the one with the lake reflection..."></textarea></div>
+      <div class="field"><label>Special Requests (optional)</label><textarea id="fnotes" placeholder="e.g. gift wrapping, cropping preferences..."></textarea></div>
     </div>
 
-    <div class="price-preview" id="pricePreview" style="display:none">
-      <div class="price-preview-ttl">Order Summary</div>
-      <div class="price-row"><span class="price-label" id="sumType">—</span><span class="price-val"></span></div>
-      <div class="price-row"><span class="price-label" id="sumSize">—</span><span class="price-val"></span></div>
-      <div class="price-row price-total"><span class="price-label">Total (inc. GST)</span><span class="price-val" id="sumTotal">—</span></div>
+    <div class="summary" id="summary">
+      <div class="summary-title">Order Summary</div>
+      <div class="summary-row"><span id="sumDesc">—</span><span id="sumPrice">—</span></div>
+      <div class="summary-total"><span>Total (inc. GST + free shipping)</span><span id="sumTotal">—</span></div>
     </div>
 
-    <div class="payid-box">
+    <div class="payid">
       <div class="payid-icon">📱</div>
       <div>
-        <div class="payid-ttl">Payment via PayID</div>
-        <div class="payid-num">0481 248 449</div>
-        <div class="payid-note">Full payment required before production begins. Use your name as the reference.</div>
+        <div class="payid-label">Payment via PayID</div>
+        <div class="payid-number">0481 248 449</div>
+        <div class="payid-note">Full payment required before production begins. Use your name as the payment reference.</div>
       </div>
     </div>
 
-    <button class="submit-btn" onclick="submitOrder()">Submit Order Request</button>
-    <p class="note">By submitting you agree to full payment before production. No cancellations once production has begun.</p>
+    <button class="submit-btn" id="submitBtn">Submit Order Request</button>
+    <p class="fine-print">No cancellations once production has begun. Full payment required before shipping.</p>
 
   </div>
 
-  <div class="success" id="successMsg">
-    <div class="success-icon">✅</div>
-    <div class="success-ttl">Order Request Received!</div>
-    <div class="success-txt">Thank you! I'll be in touch shortly to confirm your order details. Once confirmed, please make full payment via PayID to get production started.</div>
+  <div class="success" id="successBox">
+    <div style="font-size:40px;margin-bottom:16px">✅</div>
+    <h2>Order Request Received!</h2>
+    <p>Thank you! I'll be in touch shortly to confirm your order. Once confirmed, please make full payment via PayID to start production.</p>
     <div class="success-payid">
-      <div class="success-payid-ttl">Pay via PayID</div>
+      <div class="success-payid-label">Pay via PayID</div>
       <div class="success-payid-num">0481 248 449</div>
       <div class="success-ref" id="successRef"></div>
     </div>
-    <div class="success-txt">Delivery takes 7–10 business days from payment confirmation. Questions? Message me on <a href="https://www.facebook.com/hyperdexphotography" target="_blank">Facebook</a>.</div>
+    <p>Delivery in 7–10 business days from payment confirmation.<br>Questions? Message on <a href="https://www.facebook.com/hyperdexphotography" target="_blank">Facebook</a>.</p>
   </div>
 
 </div>
 
 <script>
-const prices = {
-  paper: {
-    'A4': {lustre:149, matte:169, cotton:189},
-    'A3': {lustre:199, matte:219, cotton:249},
-    'A2': {lustre:299, matte:329, cotton:369},
-    'A1': {lustre:419, matte:449, cotton:499},
-    'A0': {lustre:649, matte:699, cotton:799}
-  },
-  canvas: {
-    '40×27cm': 249,
-    '60×40cm': 369,
-    '90×60cm': 549,
-    '120×80cm': 749
-  }
+var paperPrices = {
+  A4:{lustre:149,matte:169,cotton:189},
+  A3:{lustre:199,matte:219,cotton:249},
+  A2:{lustre:299,matte:329,cotton:369},
+  A1:{lustre:419,matte:449,cotton:499},
+  A0:{lustre:649,matte:699,cotton:799}
+};
+var canvasPrices = {
+  '40x27':249,'60x40':369,'90x60':549,'120x80':749
+};
+var paperLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag'};
+var canvasLabels = {
+  '40x27':'40×27cm','60x40':'60×40cm','90x60':'90×60cm','120x80':'120×80cm'
 };
 
-const paperSizes = ['A4','A3','A2','A1','A0'];
-const canvasSizes = ['40×27cm','60×40cm','90×60cm','120×80cm'];
-
-function typeChanged() {
-  var type = document.getElementById('ftype').value;
+document.getElementById('ftype').addEventListener('change', function() {
+  var type = this.value;
   var sizeEl = document.getElementById('fsize');
   var paperField = document.getElementById('paperField');
-  sizeEl.innerHTML = '<option value="">— Select —</option>';
+
+  sizeEl.innerHTML = '';
+
   if (type === 'paper') {
-    ['A4','A3','A2','A1','A0'].forEach(function(s){
-      sizeEl.innerHTML += '<option value="'+s+'">'+s+'</option>';
+    sizeEl.innerHTML = '<option value="">— Select size —</option>';
+    ['A4','A3','A2','A1','A0'].forEach(function(s) {
+      sizeEl.innerHTML += '<option value="' + s + '">' + s + '</option>';
     });
     paperField.style.display = 'block';
   } else if (type === 'canvas') {
-    [['40x27cm','40×27cm'],['60x40cm','60×40cm'],['90x60cm','90×60cm'],['120x80cm','120×80cm']].forEach(function(s){
-      sizeEl.innerHTML += '<option value="'+s[0]+'">'+s[1]+'</option>';
+    sizeEl.innerHTML = '<option value="">— Select size —</option>';
+    ['40x27','60x40','90x60','120x80'].forEach(function(k) {
+      sizeEl.innerHTML += '<option value="' + k + '">' + canvasLabels[k] + '</option>';
     });
     paperField.style.display = 'none';
   } else {
+    sizeEl.innerHTML = '<option value="">— Select print type first —</option>';
     paperField.style.display = 'none';
   }
-  calcPrice();
-}
+  updateSummary();
+});
 
-function calcPrice() {
+document.getElementById('fsize').addEventListener('change', updateSummary);
+document.getElementById('fpaper').addEventListener('change', updateSummary);
+
+function updateSummary() {
   var type = document.getElementById('ftype').value;
   var size = document.getElementById('fsize').value;
   var paper = document.getElementById('fpaper').value;
-  var preview = document.getElementById('pricePreview');
-  if (!type || !size) { preview.style.display='none'; return; }
+  var summary = document.getElementById('summary');
+
   var total = 0;
-  var pLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag'};
-  if (type==='paper' && paper && prices.paper[size]) {
-    total = prices.paper[size][paper];
-    document.getElementById('sumType').textContent = 'Framed Print';
-    document.getElementById('sumSize').textContent = size + ' · ' + pLabels[paper];
-  } else if (type==='canvas' && prices.canvas[size]) {
-    total = prices.canvas[size];
-    document.getElementById('sumType').textContent = 'Framed Canvas';
-    document.getElementById('sumSize').textContent = size.replace('x','×');
+  var desc = '';
+
+  if (type === 'paper' && size && paper && paperPrices[size] && paperPrices[size][paper]) {
+    total = paperPrices[size][paper];
+    desc = 'Framed Print · ' + size + ' · ' + paperLabels[paper];
+  } else if (type === 'canvas' && size && canvasPrices[size]) {
+    total = canvasPrices[size];
+    desc = 'Framed Canvas · ' + canvasLabels[size];
   }
+
   if (total) {
+    document.getElementById('sumDesc').textContent = desc;
+    document.getElementById('sumPrice').textContent = '$' + total;
     document.getElementById('sumTotal').textContent = '$' + total;
-    preview.style.display = 'block';
+    summary.style.display = 'block';
   } else {
-    preview.style.display = 'none';
+    summary.style.display = 'none';
   }
 }
 
-async function submitOrder() {
-  const name = document.getElementById('fname').value.trim();
-  const email = document.getElementById('femail').value.trim();
-  const address = document.getElementById('faddress').value.trim();
-  const type = document.getElementById('ftype').value;
-  const size = document.getElementById('fsize').value;
-  const frame = document.getElementById('fframe').value;
-  const image = document.getElementById('fimage').value.trim();
-  const phone = document.getElementById('fphone').value.trim();
-  const notes = document.getElementById('fnotes').value.trim();
-  const paper = document.getElementById('fpaper').value;
+document.getElementById('submitBtn').addEventListener('click', async function() {
+  var name = document.getElementById('fname').value.trim();
+  var email = document.getElementById('femail').value.trim();
+  var address = document.getElementById('faddress').value.trim();
+  var type = document.getElementById('ftype').value;
+  var size = document.getElementById('fsize').value;
+  var frame = document.getElementById('fframe').value;
+  var image = document.getElementById('fimage').value.trim();
+  var paper = document.getElementById('fpaper').value;
+  var phone = document.getElementById('fphone').value.trim();
+  var notes = document.getElementById('fnotes').value.trim();
 
   if (!name || !email || !address || !type || !size || !frame || !image) {
-    alert('Please fill in all required fields before submitting.');
+    alert('Please fill in all required fields.');
     return;
   }
   if (type === 'paper' && !paper) {
@@ -271,38 +243,34 @@ async function submitOrder() {
     return;
   }
 
-  const btn = document.querySelector('.submit-btn');
+  var btn = document.getElementById('submitBtn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  const paperLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag Archival'};
-  const total = document.getElementById('sumTotal').textContent || 'TBC';
-
-  const formData = {
-    name, email, phone, address,
-    print_type: type === 'paper' ? 'Framed Print' : 'Framed Canvas',
-    size,
-    paper_type: type === 'paper' ? paperLabels[paper] : 'N/A (Canvas)',
-    frame_finish: frame,
-    image_description: image,
-    special_requests: notes || 'None',
-    total_price: total
-  };
+  var total = document.getElementById('sumTotal').textContent || 'TBC';
+  var typeLabel = type === 'paper' ? 'Framed Print' : 'Framed Canvas';
+  var paperLabel = type === 'paper' ? paperLabels[paper] : 'N/A';
+  var sizeLabel = type === 'canvas' ? canvasLabels[size] : size;
 
   try {
-    const response = await fetch('https://formspree.io/f/xzdwolaa', {
+    var res = await fetch('https://formspree.io/f/xzdwolaa', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify(formData)
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        name: name, email: email, phone: phone, address: address,
+        print_type: typeLabel, size: sizeLabel,
+        paper_type: paperLabel, frame_finish: frame,
+        image_description: image, special_requests: notes || 'None',
+        total_price: total
+      })
     });
-
-    if (response.ok) {
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
+    if (res.ok) {
+      document.getElementById('formArea').style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
       document.getElementById('successRef').textContent = 'Reference: ' + name;
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     } else {
-      alert('Something went wrong. Please try again or contact us on Facebook.');
+      alert('Something went wrong. Please try again or message us on Facebook.');
       btn.textContent = 'Submit Order Request';
       btn.disabled = false;
     }
@@ -311,9 +279,7 @@ async function submitOrder() {
     btn.textContent = 'Submit Order Request';
     btn.disabled = false;
   }
-}
-
-document.getElementById('paperField').style.display = 'none';
+});
 </script>
 </body>
 </html>
