@@ -309,8 +309,8 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
     var paperField = document.getElementById('paperField');
     sizeEl.innerHTML = '<option value="">— Select —</option>';
     if (type === 'paper') {
-      ['A4','A3','A2','A1','A0'].forEach(function(s){
-        sizeEl.innerHTML += '<option value="'+s+'">'+s+'</option>';
+      [['A4','A4 — 210 × 297mm'],['A3','A3 — 297 × 420mm'],['A2','A2 — 420 × 594mm'],['A1','A1 — 594 × 841mm'],['A0','A0 — 841 × 1189mm']].forEach(function(s){
+        sizeEl.innerHTML += '<option value="'+s[0]+'">'+s[1]+'</option>';
       });
       paperField.style.display = 'block';
     }
