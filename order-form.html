@@ -208,22 +208,36 @@ function updatePrice() {
   const type = document.getElementById('ftype').value;
   const sizeEl = document.getElementById('fsize');
   const paperField = document.getElementById('paperField');
+  const preview = document.getElementById('pricePreview');
 
+  // Reset size dropdown
   sizeEl.innerHTML = '<option value="">— Select —</option>';
+
   if (type === 'paper') {
-    paperSizes.forEach(s => sizeEl.innerHTML += `<option value="${s}">${s}</option>`);
+    ['A4','A3','A2','A1','A0'].forEach(function(s) {
+      var opt = document.createElement('option');
+      opt.value = s; opt.textContent = s;
+      sizeEl.appendChild(opt);
+    });
     paperField.style.display = 'block';
   } else if (type === 'canvas') {
-    canvasSizes.forEach(s => sizeEl.innerHTML += `<option value="${s}">${s}</option>`);
+    ['40×27cm','60×40cm','90×60cm','120×80cm'].forEach(function(s) {
+      var opt = document.createElement('option');
+      opt.value = s; opt.textContent = s;
+      sizeEl.appendChild(opt);
+    });
     paperField.style.display = 'none';
+  } else {
+    paperField.style.display = 'none';
+    preview.style.display = 'none';
+    return;
   }
 
   const size = sizeEl.value;
   const paper = document.getElementById('fpaper').value;
-  const preview = document.getElementById('pricePreview');
 
-  if (type && size && (type === 'canvas' || paper)) {
-    let total = 0;
+  if (size && (type === 'canvas' || paper)) {
+    var total = 0;
     if (type === 'paper' && prices.paper[size] && prices.paper[size][paper]) {
       total = prices.paper[size][paper];
     } else if (type === 'canvas' && prices.canvas[size]) {
