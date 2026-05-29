@@ -39,8 +39,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .sec-ttl em{font-style:italic;font-weight:400;color:var(--g50)}
 .sec-rule{flex:1;height:1px;background:var(--g90)}
 .sec-desc{font-size:14px;line-height:1.8;color:var(--g50);max-width:560px;margin-bottom:36px}
-.size-stage{display:flex;align-items:flex-end;gap:12px;padding:32px 20px 24px;border:1px solid var(--g90);background:var(--white);margin-bottom:14px;overflow-x:auto}
-.si{flex:1;min-width:52px;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer}
+.size-stage{display:flex;align-items:flex-end;gap:6px;padding:20px 12px 18px;border:1px solid var(--g90);background:var(--white);margin-bottom:14px}
+.si{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer}
 .sr{border:1px solid var(--g70);background:var(--off);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
 .si.active .sr{border-color:var(--black);border-width:2px;background:#EFEFED}
 .srl{font-family:var(--cond);font-weight:700;font-size:12px;color:var(--black)}
@@ -65,14 +65,14 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .tbtn.active{background:var(--black);color:var(--white);font-weight:700}
 .ppanel{display:none}.ppanel.active{display:block}
 .ptwrap{border:1px solid var(--g90);overflow-x:auto}
-.pthd{display:grid;padding:10px 16px;background:var(--black);min-width:420px}
-.pthd.c4{grid-template-columns:2fr 1fr 1fr 1fr}
-.pthd.c2{grid-template-columns:2fr 1fr}
+.pthd{display:grid;padding:10px 12px;background:var(--black)}
+.pthd.c4{grid-template-columns:1.4fr 1fr 1fr 1fr}
+.pthd.c2{grid-template-columns:1.4fr 1fr}
 .pthc{font-family:var(--cond);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
 .pthc:not(:first-child){text-align:right}
-.ptr{display:grid;padding:16px;border-bottom:1px solid var(--g90);position:relative;min-width:420px}
-.ptr.c4{grid-template-columns:2fr 1fr 1fr 1fr}
-.ptr.c2{grid-template-columns:2fr 1fr}
+.ptr{display:grid;padding:12px;border-bottom:1px solid var(--g90);position:relative}
+.ptr.c4{grid-template-columns:1.4fr 1fr 1fr 1fr}
+.ptr.c2{grid-template-columns:1.4fr 1fr}
 .ptr:last-child{border-bottom:none}
 .ptr.pop{background:#F2F1EF}
 .ptr.pop::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--black)}
@@ -80,7 +80,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .ptag{font-family:var(--cond);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g50);border:1px solid var(--g70);padding:2px 5px}
 .psd{font-family:var(--cond);font-size:10px;color:var(--g70);margin-bottom:1px}
 .psu{font-size:11px;font-style:italic;color:var(--g70)}
-.ppr{font-family:var(--serif);font-size:18px;color:var(--black);text-align:right;align-self:center}
+.ppr{font-family:var(--serif);font-size:16px;color:var(--black);text-align:right;align-self:center}
 .ptnote{margin-top:14px;font-size:12px;font-style:italic;color:var(--g70);text-align:center;line-height:1.7}
 .fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px}
 @media(min-width:600px){.fgrid{grid-template-columns:repeat(4,1fr)}}
@@ -147,11 +147,11 @@ footer{border-top:1px solid var(--g90);padding:20px 24px;display:flex;flex-wrap:
   <div class="sec-hd"><span class="sec-num">01</span><h2 class="sec-ttl">Size <em>Guide</em></h2><div class="sec-rule"></div></div>
   <p class="sec-desc">All sizes shown to scale. Tap any size to see where it works best.</p>
   <div class="size-stage">
-    <div class="si" data-info="Perfect for a desk, bedside table, or as part of a small gallery cluster on a hallway wall." onclick="selSize(this)"><div class="sr" style="width:36px;height:51px"><span class="srl">A4</span><span class="smm">210×297</span></div><div><div class="sname">A4</div><div class="suse">Small accent</div></div></div>
-    <div class="si" data-info="The most versatile size. Works in bedrooms, studies and hallways — elegant without being overwhelming." onclick="selSize(this)"><div class="sr" style="width:51px;height:72px"><span class="srl">A3</span><span class="smm">297×420</span></div><div><div class="sname">A3</div><div class="suse">Hallway · bedroom</div></div></div>
-    <div class="si active" data-info="A commanding presence in a living room or dining space. Our best seller — stunning without overwhelming the room." onclick="selSize(this)"><div class="sr" style="width:72px;height:102px"><span class="srl">A2</span><span class="smm">420×594</span></div><div><div class="sname">A2</div><div class="suse">Living · dining</div></div></div>
-    <div class="si" data-info="A bold, unmissable feature wall statement. At this size the Remarkables will genuinely stop people in their tracks." onclick="selSize(this)"><div class="sr" style="width:102px;height:144px"><span class="srl">A1</span><span class="smm">594×841</span></div><div><div class="sname">A1</div><div class="suse">Feature wall</div></div></div>
-    <div class="si" data-info="Grand and dramatic. Designed for large open spaces, commercial interiors, and collectors who want maximum visual impact." onclick="selSize(this)"><div class="sr" style="width:144px;height:204px"><span class="srl">A0</span><span class="smm">841×1189</span></div><div><div class="sname">A0</div><div class="suse">Grand statement</div></div></div>
+    <div class="si" data-info="Perfect for a desk, bedside table, or as part of a small gallery cluster on a hallway wall." onclick="selSize(this)"><div class="sr" style="width:7vw;height:10vw;max-width:40px;max-height:57px"><span class="srl">A4</span><span class="smm">210×297</span></div><div><div class="sname">A4</div><div class="suse">Small accent</div></div></div>
+    <div class="si" data-info="The most versatile size. Works in bedrooms, studies and hallways — elegant without being overwhelming." onclick="selSize(this)"><div class="sr" style="width:10vw;height:14vw;max-width:51px;max-height:72px"><span class="srl">A3</span><span class="smm">297×420</span></div><div><div class="sname">A3</div><div class="suse">Hallway · bedroom</div></div></div>
+    <div class="si active" data-info="A commanding presence in a living room or dining space. Our best seller — stunning without overwhelming the room." onclick="selSize(this)"><div class="sr" style="width:13vw;height:18vw;max-width:72px;max-height:102px"><span class="srl">A2</span><span class="smm">420×594</span></div><div><div class="sname">A2</div><div class="suse">Living · dining</div></div></div>
+    <div class="si" data-info="A bold, unmissable feature wall statement. At this size the Remarkables will genuinely stop people in their tracks." onclick="selSize(this)"><div class="sr" style="width:18vw;height:26vw;max-width:102px;max-height:144px"><span class="srl">A1</span><span class="smm">594×841</span></div><div><div class="sname">A1</div><div class="suse">Feature wall</div></div></div>
+    <div class="si" data-info="Grand and dramatic. Designed for large open spaces, commercial interiors, and collectors who want maximum visual impact." onclick="selSize(this)"><div class="sr" style="width:26vw;height:36vw;max-width:144px;max-height:204px"><span class="srl">A0</span><span class="smm">841×1189</span></div><div><div class="sname">A0</div><div class="suse">Grand statement</div></div></div>
   </div>
   <div class="sibar"><hr><span id="sInfo">A commanding presence in a living room or dining space. Our best seller.</span><hr></div>
 </div>
