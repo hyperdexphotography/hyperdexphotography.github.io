@@ -56,11 +56,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .hero-btn-secondary:hover{background:rgba(255,255,255,0.1)}
 
 /* TRUST BAR */
-.trust-bar{background:var(--black);padding:14px 32px;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
-@media(max-width:599px){.trust-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding:14px 20px}}
-.trust-item{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px}
-@media(max-width:599px){.trust-item{font-size:9px;letter-spacing:.08em}}
+.trust-bar{background:var(--black);padding:10px 0;overflow:hidden;white-space:nowrap}
+.trust-marquee{display:inline-flex;align-items:center;animation:marquee 20s linear infinite;gap:0}
+.trust-marquee:hover{animation-play-state:paused}
+.trust-item{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);display:inline-flex;align-items:center;gap:6px;padding:0 32px;border-right:1px solid rgba(255,255,255,0.15)}
 .trust-item strong{color:var(--white)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ROOM MOCKUP SECTION */
 .mockup-section{display:grid;grid-template-columns:1fr 1fr}
@@ -292,11 +293,18 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item"><strong>Free Shipping</strong> Australia-wide</div>
-  <div class="trust-item"><strong>Gallery-Grade</strong> Printing</div>
-  <div class="trust-item"><strong>Handframed</strong> in Australia</div>
-  <div class="trust-item"><strong>7–10 Days</strong> Delivery</div>
-  <div class="trust-item"><strong>100%</strong> Satisfaction Guarantee</div>
+  <div class="trust-marquee">
+    <div class="trust-item"><strong>Free Shipping</strong> Australia-wide</div>
+    <div class="trust-item"><strong>Gallery-Grade</strong> Printing</div>
+    <div class="trust-item"><strong>Handframed</strong> in Australia</div>
+    <div class="trust-item"><strong>7–10 Days</strong> Delivery</div>
+    <div class="trust-item"><strong>100%</strong> Satisfaction Guarantee</div>
+    <div class="trust-item"><strong>Free Shipping</strong> Australia-wide</div>
+    <div class="trust-item"><strong>Gallery-Grade</strong> Printing</div>
+    <div class="trust-item"><strong>Handframed</strong> in Australia</div>
+    <div class="trust-item"><strong>7–10 Days</strong> Delivery</div>
+    <div class="trust-item"><strong>100%</strong> Satisfaction Guarantee</div>
+  </div>
 </div>
 
 <!-- ROOM MOCKUPS -->
