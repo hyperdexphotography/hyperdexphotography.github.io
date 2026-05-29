@@ -104,7 +104,7 @@ textarea{resize:vertical;min-height:100px}
       <div class="card-ttl">Print Options</div>
       <div class="field">
         <label>Print Type</label>
-        <select id="ftype" onchange="updatePrice()">
+        <select id="ftype" onchange="typeChanged()">
           <option value="">— Select —</option>
           <option value="paper">Framed Print</option>
           <option value="canvas">Framed Canvas</option>
@@ -112,13 +112,13 @@ textarea{resize:vertical;min-height:100px}
       </div>
       <div class="field">
         <label>Size</label>
-        <select id="fsize" onchange="updatePrice()">
+        <select id="fsize" onchange="calcPrice()">
           <option value="">— Select —</option>
         </select>
       </div>
       <div class="field" id="paperField">
         <label>Paper Type</label>
-        <select id="fpaper" onchange="updatePrice()">
+        <select id="fpaper" onchange="calcPrice()">
           <option value="">— Select —</option>
           <option value="lustre">Lustre Pro (270gsm · Pearl Finish)</option>
           <option value="matte">Enhanced Matte (230gsm · Flat Matte) ★ Most Popular</option>
@@ -204,51 +204,47 @@ const prices = {
 const paperSizes = ['A4','A3','A2','A1','A0'];
 const canvasSizes = ['40×27cm','60×40cm','90×60cm','120×80cm'];
 
-function updatePrice() {
-  const type = document.getElementById('ftype').value;
-  const sizeEl = document.getElementById('fsize');
-  const paperField = document.getElementById('paperField');
-  const preview = document.getElementById('pricePreview');
-
-  // Reset size dropdown
+function typeChanged() {
+  var type = document.getElementById('ftype').value;
+  var sizeEl = document.getElementById('fsize');
+  var paperField = document.getElementById('paperField');
   sizeEl.innerHTML = '<option value="">— Select —</option>';
-
   if (type === 'paper') {
-    ['A4','A3','A2','A1','A0'].forEach(function(s) {
-      var opt = document.createElement('option');
-      opt.value = s; opt.textContent = s;
-      sizeEl.appendChild(opt);
+    ['A4','A3','A2','A1','A0'].forEach(function(s){
+      sizeEl.innerHTML += '<option value="'+s+'">'+s+'</option>';
     });
     paperField.style.display = 'block';
   } else if (type === 'canvas') {
-    ['40×27cm','60×40cm','90×60cm','120×80cm'].forEach(function(s) {
-      var opt = document.createElement('option');
-      opt.value = s; opt.textContent = s;
-      sizeEl.appendChild(opt);
+    [['40x27cm','40×27cm'],['60x40cm','60×40cm'],['90x60cm','90×60cm'],['120x80cm','120×80cm']].forEach(function(s){
+      sizeEl.innerHTML += '<option value="'+s[0]+'">'+s[1]+'</option>';
     });
     paperField.style.display = 'none';
   } else {
     paperField.style.display = 'none';
-    preview.style.display = 'none';
-    return;
   }
+  calcPrice();
+}
 
-  const size = sizeEl.value;
-  const paper = document.getElementById('fpaper').value;
-
-  if (size && (type === 'canvas' || paper)) {
-    var total = 0;
-    if (type === 'paper' && prices.paper[size] && prices.paper[size][paper]) {
-      total = prices.paper[size][paper];
-    } else if (type === 'canvas' && prices.canvas[size]) {
-      total = prices.canvas[size];
-    }
-    if (total) {
-      document.getElementById('sumType').textContent = type === 'paper' ? 'Framed Print' : 'Framed Canvas';
-      document.getElementById('sumSize').textContent = size + (paper ? ' · ' + {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag'}[paper] : '');
-      document.getElementById('sumTotal').textContent = '$' + total;
-      preview.style.display = 'block';
-    }
+function calcPrice() {
+  var type = document.getElementById('ftype').value;
+  var size = document.getElementById('fsize').value;
+  var paper = document.getElementById('fpaper').value;
+  var preview = document.getElementById('pricePreview');
+  if (!type || !size) { preview.style.display='none'; return; }
+  var total = 0;
+  var pLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag'};
+  if (type==='paper' && paper && prices.paper[size]) {
+    total = prices.paper[size][paper];
+    document.getElementById('sumType').textContent = 'Framed Print';
+    document.getElementById('sumSize').textContent = size + ' · ' + pLabels[paper];
+  } else if (type==='canvas' && prices.canvas[size]) {
+    total = prices.canvas[size];
+    document.getElementById('sumType').textContent = 'Framed Canvas';
+    document.getElementById('sumSize').textContent = size.replace('x','×');
+  }
+  if (total) {
+    document.getElementById('sumTotal').textContent = '$' + total;
+    preview.style.display = 'block';
   } else {
     preview.style.display = 'none';
   }
