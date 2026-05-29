@@ -38,9 +38,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .hero{position:relative;overflow:hidden;background:#111}
 
 .hero-bg{position:relative;width:100%}
-.hero-slide{display:none;width:100%;position:relative}
+.hero-slide{width:100%;position:relative;opacity:0;transition:opacity 1s ease;display:none}
 .hero-slide img{width:100%;height:auto;display:block;transform:scale(1.08);transform-origin:center center}
-.hero-slide.active{display:block}
+.hero-slide.active{display:block;opacity:1}
 .hero-dots{position:absolute;bottom:16px;right:20px;display:flex;gap:8px;z-index:3}
 .hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background .3s;border:none;padding:0}
 .hero-dot.active{background:var(--white)}
@@ -274,6 +274,13 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 <div class="hero">
   <div class="hero-bg">
     <div class="hero-slide active"><img src="63.jpg" alt="Living room print"></div>
+    <div class="hero-slide"><img src="38.jpg" alt="Home office print"></div>
+    <div class="hero-slide"><img src="43.jpg" alt="Bedroom print"></div>
+  </div>
+  <div class="hero-dots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot" onclick="goSlide(1)"></button>
+    <button class="hero-dot" onclick="goSlide(2)"></button>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -566,6 +573,20 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 
 function openMockup(src){var lb=document.getElementById('mockup-lb');document.getElementById('mockup-lb-img').src=src;lb.style.display='flex';document.body.style.overflow='hidden';}
 function closeMockup(){document.getElementById('mockup-lb').style.display='none';document.body.style.overflow='';}
+// Hero slideshow
+var slideIndex = 0;
+var slides = document.querySelectorAll('.hero-slide');
+var dots = document.querySelectorAll('.hero-dot');
+function goSlide(n) {
+  slides[slideIndex].classList.remove('active');
+  dots[slideIndex].classList.remove('active');
+  slideIndex = n;
+  slides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
+function nextSlide() { goSlide((slideIndex + 1) % slides.length); }
+setInterval(nextSlide, 5000);
+
 function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
 function toggleFaq(btn){btn.parentElement.classList.toggle("open");}
 var photos=["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg","images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg","images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg","images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg"];
