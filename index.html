@@ -35,6 +35,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);border-b
 .nav-links a:hover{color:var(--black)}
 .nav-order{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--white);background:var(--black);text-decoration:none;padding:9px 20px;white-space:nowrap}
 .nav-order:hover{background:var(--gold)}
+@media(max-width:599px){.nav-order{display:none}}
 
 /* HERO */
 .hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--cream);position:relative;overflow:hidden;padding:80px 24px 60px}
@@ -456,12 +457,17 @@ body{padding-bottom:0}
 </div>
 <div class="gallery-grid">
   <div class="gallery-item" onclick="openLightbox(0)"><img src="images/1.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(1)"><img src="images/4.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
-  <div class="gallery-item" onclick="openLightbox(2)"><img src="images/5.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(3)"><img src="images/7.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
-  <div class="gallery-item" onclick="openLightbox(4)"><img src="images/10.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
-  <div class="gallery-item" onclick="openLightbox(5)"><img src="images/11.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
-  <div class="gallery-item" onclick="openLightbox(6)"><img src="images/12.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item tall" onclick="openLightbox(1)"><img src="images/2.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(2)"><img src="images/3.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item tall" onclick="openLightbox(3)"><img src="images/4.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(4)"><img src="images/5.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(5)"><img src="images/6.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(6)"><img src="images/7.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item tall" onclick="openLightbox(7)"><img src="images/8.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(8)"><img src="images/9.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item tall" onclick="openLightbox(9)"><img src="images/10.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(10)"><img src="images/11.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
+  <div class="gallery-item" onclick="openLightbox(11)"><img src="images/12.jpg" alt="Queenstown Landscape"><div class="overlay"></div></div>
 </div>
 <div style="text-align:center;padding:28px 24px;background:var(--stone);border-top:1px solid var(--g90)">
   <p style="font-family:Georgia,serif;font-size:14px;font-style:italic;color:var(--g50);margin-bottom:16px">More images available — message on Facebook to enquire about a specific scene.</p>
@@ -565,7 +571,7 @@ body{padding-bottom:0}
 function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
 function swP(t,btn){document.querySelectorAll(".price-toggle button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".ppanel").forEach(p=>p.classList.remove("active"));document.getElementById("pp-"+t).classList.add("active");}
 function toggleFaq(btn){var item=btn.parentElement;item.classList.toggle("open");}
-var photos=["images/1.jpg","images/4.jpg","images/5.jpg","images/7.jpg","images/10.jpg","images/11.jpg","images/12.jpg"];
+var photos=["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg","images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg"];
 var currentPhoto=0;
 function openLightbox(i){currentPhoto=i;document.getElementById("lightbox-img").src=photos[i];document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
 function closeLightbox(e){if(e.target===document.getElementById("lightbox"))closeLightbox2();}
