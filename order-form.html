@@ -240,7 +240,7 @@ function updatePrice() {
   }
 }
 
-function submitOrder() {
+async function submitOrder() {
   const name = document.getElementById('fname').value.trim();
   const email = document.getElementById('femail').value.trim();
   const address = document.getElementById('faddress').value.trim();
@@ -248,20 +248,59 @@ function submitOrder() {
   const size = document.getElementById('fsize').value;
   const frame = document.getElementById('fframe').value;
   const image = document.getElementById('fimage').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  const notes = document.getElementById('fnotes').value.trim();
+  const paper = document.getElementById('fpaper').value;
 
   if (!name || !email || !address || !type || !size || !frame || !image) {
     alert('Please fill in all required fields before submitting.');
     return;
   }
-  if (type === 'paper' && !document.getElementById('fpaper').value) {
+  if (type === 'paper' && !paper) {
     alert('Please select a paper type.');
     return;
   }
 
-  document.getElementById('orderForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-  document.getElementById('successRef').textContent = 'Reference: ' + name;
-  window.scrollTo(0,0);
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const paperLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag Archival'};
+  const total = document.getElementById('sumTotal').textContent || 'TBC';
+
+  const formData = {
+    name, email, phone, address,
+    print_type: type === 'paper' ? 'Framed Print' : 'Framed Canvas',
+    size,
+    paper_type: type === 'paper' ? paperLabels[paper] : 'N/A (Canvas)',
+    frame_finish: frame,
+    image_description: image,
+    special_requests: notes || 'None',
+    total_price: total
+  };
+
+  try {
+    const response = await fetch('https://formspree.io/f/xzdwolaa', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      document.getElementById('successRef').textContent = 'Reference: ' + name;
+      window.scrollTo(0,0);
+    } else {
+      alert('Something went wrong. Please try again or contact us on Facebook.');
+      btn.textContent = 'Submit Order Request';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Network error. Please check your connection and try again.');
+    btn.textContent = 'Submit Order Request';
+    btn.disabled = false;
+  }
 }
 
 document.getElementById('paperField').style.display = 'none';
