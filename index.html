@@ -3,600 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyperdex Photography — Fine Art Landscape Prints from Queenstown, NZ</title>
-<meta name="description" content="Gallery-grade fine art landscape prints from Queenstown, New Zealand. Handframed in Australia and shipped ready to hang. Free shipping Australia-wide.">
+<title>Place an Order — Hyperdex Photography</title>
 <link rel="icon" type="image/jpeg" href="favicon.jpg">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-:root{
-  --black:#0A0A0A;--white:#FFFFFF;--cream:#FAF9F6;--stone:#F2F0EC;
-  --g90:#E4E1DB;--g70:#B5B0A8;--g50:#7D7870;--g30:#4A4640;--gold:#8B7355;
-  --serif:Georgia,"Times New Roman",serif;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-body{background:var(--white);color:var(--black);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:64px}
-@media(max-width:599px){body{padding-top:56px}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--g90);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-@media(max-width:599px){nav{padding:0 16px;height:56px}}
-.nav-left{display:flex;flex-direction:column;gap:2px}
-.nav-brand{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--black);text-decoration:none}
-.nav-fb{font-size:10px;color:var(--g50);text-decoration:none;display:flex;align-items:center;gap:5px}
-.nav-fb:hover{color:var(--gold)}
-.fb-icon{width:14px;height:14px;border-radius:3px;background:#1877F2;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.fb-icon svg{width:8px;height:8px;fill:white}
-.nav-links{display:flex;gap:24px;list-style:none}
-@media(max-width:599px){.nav-links{display:none}}
-.nav-links a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g50);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--black)}
-.nav-order{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--white);background:var(--black);text-decoration:none;padding:9px 20px;white-space:nowrap;transition:background .2s}
-.nav-order:hover{background:var(--gold)}
-@media(max-width:599px){.nav-order{display:none}}
-
-/* HERO */
-.hero{position:relative;overflow:hidden;background:#111}
-
-.hero-bg{position:relative;width:100%}
-.hero-slide{width:100%;position:relative;opacity:0;transition:opacity 1s ease;display:none}
-.hero-slide img{width:100%;height:auto;display:block;transform:scale(1.08);transform-origin:center center}
-.hero-slide.active{display:block;opacity:1}
-.hero-dots{position:absolute;bottom:16px;right:20px;display:flex;gap:8px;z-index:3}
-.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background .3s;border:none;padding:0}
-.hero-dot.active{background:var(--white)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.1) 50%,transparent 100%);pointer-events:none}
-.hero-content{position:absolute;bottom:0;left:0;z-index:2;padding:32px 48px 48px;max-width:700px}
-@media(max-width:599px){.hero-content{padding:20px 20px 32px}}
-.hero-eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:14px}
-.hero-title{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:700;color:var(--white);line-height:1;margin-bottom:6px}
-.hero-title em{font-style:italic;font-weight:400}
-.hero-sub{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:28px;max-width:480px;font-family:var(--serif);font-style:italic}
-.hero-btns{display:flex;gap:10px;flex-wrap:nowrap}
-.hero-btn-primary{display:inline-block;background:var(--white);color:var(--black);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:15px 32px;transition:background .2s,color .2s;white-space:nowrap}
-.hero-btn-primary:hover{background:var(--gold);color:var(--white)}
-.hero-btn-secondary{display:inline-block;border:1px solid rgba(255,255,255,0.6);color:var(--white);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:15px 32px;transition:all .2s;white-space:nowrap}
-.hero-btn-secondary:hover{background:rgba(255,255,255,0.1)}
-@media(max-width:599px){.hero-btn-primary,.hero-btn-secondary{font-size:9px;padding:10px 16px;letter-spacing:.14em}}
-
-/* TRUST BAR */
-.trust-bar{background:var(--black);padding:10px 0;overflow:hidden;white-space:nowrap}
-.trust-marquee{display:inline-flex;align-items:center;animation:marquee 20s linear infinite;gap:0}
-.trust-marquee:hover{animation-play-state:paused}
-.trust-item{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);display:inline-flex;align-items:center;gap:6px;padding:0 32px;border-right:1px solid rgba(255,255,255,0.15)}
-.trust-item strong{color:var(--white)}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ROOM MOCKUP SECTION */
-.mockup-section{display:grid;grid-template-columns:1fr 1fr}
-@media(max-width:599px){.mockup-section{grid-template-columns:1fr}}
-.mockup-item{position:relative;cursor:pointer;background:#111;overflow:hidden;display:inline-block;width:100%}.mockup-item img{width:100%;height:auto;display:block}.mockup-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 50%)}
-.mockup-item img{width:100%;height:auto;display:block}
-.mockup-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 50%)}
-.mockup-label{position:absolute;bottom:10px;left:10px;z-index:2}
-.mockup-tag{font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:4px}
-.mockup-title{font-family:var(--serif);font-size:11px;font-weight:700;color:var(--white);line-height:1.2}
-.mockup-cta{margin-top:3px;display:inline-block;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--white);border-bottom:1px solid rgba(255,255,255,0.5);padding-bottom:1px;text-decoration:none}.mockup-price{font-family:Georgia,serif;font-size:11px;font-weight:700;color:var(--white);margin-bottom:4px}.mockup-size{font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:4px}
-@media(min-width:600px){.mockup-title{font-size:18px}.mockup-label{bottom:24px;left:24px}.mockup-price{font-size:18px}.mockup-tag{font-size:10px}.mockup-cta{font-size:10px}.mockup-size{font-size:9px}}
-
-/* DIVIDER */
-.divider{height:1px;background:var(--g90)}
-
-/* SECTIONS */
-.section{padding:80px 48px;max-width:1080px;margin:0 auto}
-@media(max-width:599px){.section{padding:52px 20px}}
-.sec-header{display:flex;align-items:center;gap:20px;margin-bottom:12px}
-.sec-num{font-size:10px;letter-spacing:.2em;color:var(--g70);flex-shrink:0;font-weight:500}
-.sec-title{font-family:var(--serif);font-size:clamp(26px,3.5vw,40px);font-weight:700;color:var(--black);line-height:1}
-.sec-title em{font-style:italic;font-weight:400;color:var(--g50)}
-.sec-rule{flex:1;height:1px;background:var(--g90)}
-.sec-desc{font-size:14px;line-height:1.85;color:var(--g50);max-width:540px;margin-bottom:40px}
-
-/* SIZE GUIDE */
-.size-box{border:1px solid var(--g90);background:var(--white);padding:28px 20px 20px;margin-bottom:12px;display:flex;align-items:flex-end;gap:10px}
-.si{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:opacity .2s}
-.si:hover{opacity:.8}
-.sr{border:1px solid var(--g70);background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:all .2s}
-.si.active .sr{border-color:var(--black);border-width:2px;background:var(--g90)}
-.srl{font-size:13px;font-weight:700;color:var(--black);font-family:var(--serif)}
-.smm{font-size:8px;color:var(--g70);text-align:center;letter-spacing:.04em}
-.sname{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--black)}
-.suse{font-size:10px;font-style:italic;color:var(--g50);text-align:center}
-.sinfo-bar{display:flex;align-items:center;gap:14px;margin-top:4px}
-.sinfo-bar hr{flex:1;border:none;border-top:1px solid var(--g90)}
-#sInfo{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--g50);text-align:center}
-
-/* PAPER */
-.paper-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--g90);border:1px solid var(--g90)}
-@media(min-width:600px){.paper-grid{grid-template-columns:repeat(3,1fr)}}
-.paper-card{padding:32px 24px;background:var(--white);border-top:3px solid transparent;transition:border-color .2s}
-.paper-card:hover{border-top-color:var(--g70)}
-.paper-card.featured{background:var(--cream);border-top-color:var(--black)}
-.paper-badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;margin-bottom:16px}
-.paper-name{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--black);margin-bottom:4px;line-height:1.1}
-.paper-spec{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--g70);margin-bottom:14px}
-.paper-desc{font-size:13px;line-height:1.75;color:var(--g50)}
-.paper-divider{height:1px;background:var(--g90);margin:16px 0}
-.paper-best{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--g70)}
-
-/* PRICING */
-.price-table{border:1px solid var(--g90);overflow-x:auto}
-.price-thead{display:grid;padding:12px 16px;background:var(--black)}
-.price-thead.c4{grid-template-columns:0.9fr 1fr 1fr 1fr}
-.price-thead.c2{grid-template-columns:0.9fr 1fr}
-.price-th{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--white)}
-.price-th:not(:first-child){text-align:right}
-.price-row{display:grid;padding:14px 16px;border-bottom:1px solid var(--g90);position:relative;transition:background .15s}
-.price-row:last-child{border-bottom:none}
-.price-row:hover{background:var(--stone)}
-.price-row.c4{grid-template-columns:0.9fr 1fr 1fr 1fr}
-.price-row.c2{grid-template-columns:0.9fr 1fr}
-.price-row.pop{background:var(--cream)}
-.price-row.pop::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
-.price-size{font-size:15px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:8px;margin-bottom:2px}
-.price-tag{font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px}
-.price-dim{font-size:9px;color:var(--g70);letter-spacing:.04em}
-.price-val{font-family:var(--serif);font-size:17px;color:var(--black);text-align:right;align-self:center}
-.price-note{margin-top:14px;font-size:12px;font-style:italic;color:var(--g70);text-align:center;line-height:1.7}
-
-/* FRAMES */
-.frame-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
-@media(min-width:600px){.frame-grid{grid-template-columns:repeat(4,1fr)}}
-.frame-card{border:1px solid var(--g90);overflow:hidden;transition:transform .2s,border-color .2s;background:var(--white)}
-.frame-card:hover{transform:translateY(-3px);border-color:var(--g70)}
-.frame-swatch{height:140px;display:flex;align-items:center;justify-content:center;background:#E8F4F8}
-.frame-swatch svg{width:100%;height:100%}
-.frame-info{padding:14px 16px;background:var(--white)}
-.frame-name{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:3px}
-.frame-tone{font-size:11px;font-style:italic;color:var(--g70)}
-.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
-.include-card{padding:22px 24px;border:1px solid var(--g90);background:var(--white)}
-.include-tag{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:8px}
-.include-desc{font-size:13px;line-height:1.8;color:var(--g50)}
-.whats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--g90);border:1px solid var(--g90)}
-@media(min-width:600px){.whats-grid{grid-template-columns:repeat(3,1fr)}}
-.whats-item{background:var(--white);padding:22px}
-.whats-icon{font-size:18px;margin-bottom:8px;display:block}
-.whats-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:4px}
-.whats-desc{font-size:12px;line-height:1.65;color:var(--g70)}
-
-/* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
-@media(min-width:600px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
-.gallery-item{overflow:hidden;aspect-ratio:1/1;cursor:pointer;position:relative}
-.gallery-item.tall{aspect-ratio:3/4}
-.gallery-item img{width:100%;height:100%;object-fit:contain;transition:transform .4s ease;display:block}
-.gallery-item:hover img{transform:scale(1.05)}
-.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
-.gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.25)}
-.gallery-overlay span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:white;opacity:0;transition:opacity .3s}
-.gallery-item:hover .gallery-overlay span{opacity:1}
-
-/* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:1000;align-items:center;justify-content:center;padding:20px}
-.lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
-.lightbox-close{position:absolute;top:20px;right:24px;font-size:32px;color:white;cursor:pointer;background:none;border:none;line-height:1}
-.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);font-size:28px;color:white;cursor:pointer;background:none;border:none;padding:12px;opacity:.7}
-.lightbox-prev{left:16px}
-.lightbox-next{right:16px}
-.lightbox-prev:hover,.lightbox-next:hover{opacity:1}
-
-/* FAQ */
-.faq-list{border:1px solid var(--g90)}
-.faq-item{border-bottom:1px solid var(--g90)}
-.faq-item:last-child{border-bottom:none}
-.faq-q{width:100%;text-align:left;background:var(--white);border:none;padding:20px 24px;font-size:15px;font-weight:600;color:var(--black);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.faq-q:hover{background:var(--stone)}
-.faq-icon{font-size:20px;color:var(--g70);flex-shrink:0;transition:transform .2s;font-weight:300;line-height:1}
-.faq-a{display:none;padding:0 24px 20px;font-size:14px;line-height:1.8;color:var(--g50);font-family:var(--serif);font-style:italic}
-.faq-item.open .faq-a{display:block}
-.faq-item.open .faq-icon{transform:rotate(45deg)}
-
-/* ORDER STEPS */
-.steps{display:flex;flex-direction:column;gap:0;margin:0 auto 48px}
-@media(min-width:600px){.steps{flex-direction:row}}
-.step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 16px;border:1px solid var(--g90);margin-bottom:-1px;background:var(--white)}
-@media(min-width:600px){.step{margin-bottom:0;margin-right:-1px}}
-.step-num{width:36px;height:36px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:16px;font-family:var(--serif)}
-.step-title{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:6px}
-.step-desc{font-size:12px;font-style:italic;line-height:1.65;color:var(--g50);font-family:var(--serif)}
-
-/* CTA SECTION */
-.cta-section{position:relative;overflow:hidden;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center}
-.cta-bg{position:absolute;inset:0;background:url('42.jpg') center/cover no-repeat}
-.cta-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55)}
-.cta-content{position:relative;z-index:2;padding:60px 24px;max-width:560px}
-.cta-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px}
-.cta-title{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:400;font-style:italic;color:var(--white);margin-bottom:16px;line-height:1.2}
-.cta-sub{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:32px}
-.cta-btn{display:inline-block;background:var(--white);color:var(--black);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;padding:16px 40px;margin-bottom:16px;transition:all .2s}
-.cta-btn:hover{background:var(--gold);color:var(--white)}
-.cta-link{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none}
-.cta-link:hover{color:var(--white)}
-
-/* DELIVERY TIMELINE */
-.timeline{display:flex;flex-direction:column;gap:0;max-width:700px;margin:0 auto}
-@media(min-width:600px){.timeline{flex-direction:row;align-items:flex-start}}
-.tl-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:0 12px 28px}
-.tl-step::after{content:"";position:absolute;right:-50%;top:20px;width:100%;height:1px;background:var(--g90)}
-@media(max-width:599px){.tl-step::after{display:none}}
-.tl-step:last-child::after{display:none}
-.tl-dot{width:40px;height:40px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:12px;font-family:var(--serif)}
-.tl-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:4px}
-.tl-desc{font-size:12px;font-style:italic;color:var(--g50);line-height:1.5;font-family:var(--serif)}
-
-/* PAYMENT */
-.payid-highlight{background:var(--black);padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.payid-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px}
-.payid-number{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--white)}
-.payid-note{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px}
-.payment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--g90);border:1px solid var(--g90)}
-@media(min-width:600px){.payment-grid{grid-template-columns:repeat(3,1fr)}}
-.payment-item{background:var(--white);padding:28px 22px}
-.payment-icon{font-size:20px;margin-bottom:12px;display:block}
-.payment-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:6px}
-.payment-desc{font-size:12px;line-height:1.7;color:var(--g70)}
-
-/* MOBILE STICKY CTA */
-.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--black);color:var(--white);text-align:center;padding:16px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
-.mobile-cta:hover{background:var(--gold)}
-@media(max-width:599px){.mobile-cta{display:block};body{padding-bottom:56px}}
-
-/* FOOTER */
-footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
-@media(max-width:599px){footer{padding:20px}}
-.footer-brand{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--black)}
-.footer-note{font-size:10px;letter-spacing:.06em;color:var(--g70)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#F8F7F5;color:#0C0C0C;font-size:15px;line-height:1.6}
+nav{background:#fff;border-bottom:1px solid #E8E6E2;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:10}
+.nav-brand a{display:block;font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;text-decoration:none;color:#0C0C0C}
+.nav-fb{font-size:10px;color:#7D7870;text-decoration:none;display:flex;align-items:center;gap:5px;margin-top:2px}.nav-fb:hover{color:#8B7355}
+.fb-icon{width:20px;height:20px;border-radius:3px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.fb-icon img{width:100%;height:100%;object-fit:cover}
+.back-btn{font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#7A7874;border:1px solid #E8E6E2;padding:8px 16px}
+.page{max-width:640px;margin:0 auto;padding:40px 20px 80px}
+h1{font-family:Georgia,serif;font-size:36px;font-weight:700;margin-bottom:6px}
+h1 em{font-style:italic;font-weight:400;color:#7A7874}
+.subtitle{font-size:14px;color:#7A7874;margin-bottom:32px;line-height:1.7}
+.card{background:#fff;border:1px solid #E8E6E2;padding:24px;margin-bottom:16px}
+.card-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7A7874;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #E8E6E2}
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4A4845;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid #E8E6E2;background:#fff;font-family:Arial,sans-serif;font-size:14px;color:#0C0C0C;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#0C0C0C}
+.field textarea{resize:vertical;min-height:80px}
+.field select{cursor:pointer}
+#paperField{display:none}
+.summary{background:#fff;border:1px solid #E8E6E2;padding:20px;margin-bottom:16px;display:none}
+.summary-title{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7A7874;margin-bottom:12px}
+.summary-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E6E2;font-size:13px;color:#7A7874}
+.summary-total{display:flex;justify-content:space-between;padding-top:12px}
+.summary-total span:first-child{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.summary-total span:last-child{font-family:Georgia,serif;font-size:22px}
+.payid{background:#fff;border:1px solid #E8E6E2;padding:18px 20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:14px}
+.payid-icon{font-size:24px;margin-top:2px}
+.payid-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A7874;margin-bottom:4px}
+.payid-number{font-family:Georgia,serif;font-size:22px;margin-bottom:2px}
+.payid-note{font-size:12px;color:#7A7874}
+.submit-btn{width:100%;padding:15px;background:#0C0C0C;color:#fff;border:none;font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+.submit-btn:disabled{background:#888;cursor:not-allowed}
+.fine-print{font-size:12px;color:#7A7874;text-align:center;margin-top:10px;font-style:italic}
+.success{display:none;background:#fff;border:1px solid #E8E6E2;padding:40px 24px;text-align:center}
+.success h2{font-family:Georgia,serif;font-size:28px;font-style:italic;margin-bottom:10px}
+.success p{font-size:14px;color:#7A7874;line-height:1.7;margin-bottom:16px}
+.success-payid{background:#F8F7F5;padding:16px;margin:16px 0;text-align:left}
+.success-payid-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A7874;margin-bottom:4px}
+.success-payid-num{font-family:Georgia,serif;font-size:24px}
+.success-ref{font-size:12px;color:#7A7874;margin-top:4px}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-left">
-    <a href="#" class="nav-brand">Hyperdex Photography</a>
+  <div class="nav-brand">
+    <a href="index.html">Hyperdex Photography</a>
     <a href="https://www.facebook.com/hyperdexphotography" target="_blank" class="nav-fb">
-      <span class="fb-icon"><svg viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg"><path d="M5.2 14V7.7h2.1l.3-2.4H5.2V3.8c0-.7.2-1.2 1.2-1.2H7.7V.1C7.4.1 6.6 0 5.7 0 3.8 0 2.5 1.2 2.5 3.3v2H.4v2.4h2.1V14h2.7z"/></svg></span>Facebook
+      <span class="fb-icon"><img src="favicon.jpg" alt="Hyperdex Logo"></span>Facebook
     </a>
   </div>
-  <ul class="nav-links">
-    <li><a href="#sizes">Sizes</a></li>
-    <li><a href="#papers">Paper</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#payment">Payment</a></li>
-  </ul>
-  <a href="order-form.html" class="nav-order">Place an Order</a>
+  <a href="index.html" class="back-btn">← Back to Price List</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg">
-    <div class="hero-slide active"><img src="63.jpg" alt="Living room print"></div>
-    <div class="hero-slide"><img src="38.jpg" alt="Home office print"></div>
-    <div class="hero-slide"><img src="43.jpg" alt="Bedroom print"></div>
-  </div>
-  <div class="hero-dots">
-    <button class="hero-dot active" onclick="goSlide(0)"></button>
-    <button class="hero-dot" onclick="goSlide(1)"></button>
-    <button class="hero-dot" onclick="goSlide(2)"></button>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Queenstown, New Zealand</p>
-    <h1 class="hero-title">Fine Art<br><em>Landscape Prints</em></h1>
-    <p class="hero-sub">Gallery-grade prints, handframed in Australia and shipped ready to hang — anywhere in the country.</p>
-    <div class="hero-btns">
-      <a href="order-form.html" class="hero-btn-primary">Place an Order</a>
-      <a href="#gallery" class="hero-btn-secondary">View Gallery</a>
+<div class="page">
+  <h1>Place an <em>Order</em></h1>
+  <p class="subtitle">Fill in your details below. Full payment via PayID is required before production begins.</p>
+
+  <div id="formArea">
+
+    <div class="card">
+      <div class="card-title">Your Details</div>
+      <div class="field"><label>Full Name *</label><input type="text" id="fname" placeholder="Jane Smith"></div>
+      <div class="field"><label>Email Address *</label><input type="email" id="femail" placeholder="jane@example.com"></div>
+      <div class="field"><label>Phone (optional)</label><input type="tel" id="fphone" placeholder="04xx xxx xxx"></div>
+      <div class="field"><label>Delivery Address *</label><input type="text" id="faddress" placeholder="Street, Suburb, State, Postcode"></div>
     </div>
-  </div>
-</div>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-marquee">
-    <div class="trust-item"><strong>Free Shipping</strong> Australia-wide</div>
-    <div class="trust-item"><strong>Gallery-Grade</strong> Printing</div>
-    <div class="trust-item"><strong>Handframed</strong> in Australia</div>
-    <div class="trust-item"><strong>7–10 Days</strong> Delivery</div>
-    <div class="trust-item"><strong>100%</strong> Satisfaction Guarantee</div>
-    <div class="trust-item"><strong>Free Shipping</strong> Australia-wide</div>
-    <div class="trust-item"><strong>Gallery-Grade</strong> Printing</div>
-    <div class="trust-item"><strong>Handframed</strong> in Australia</div>
-    <div class="trust-item"><strong>7–10 Days</strong> Delivery</div>
-    <div class="trust-item"><strong>100%</strong> Satisfaction Guarantee</div>
-  </div>
-</div>
-
-<!-- ROOM MOCKUPS -->
-<div style="background:var(--stone);padding:40px 0 0">
-  <div style="max-width:1080px;margin:0 auto;padding:0 48px 20px">
-    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:10px">
-      <span style="font-size:10px;letter-spacing:.2em;color:var(--g70);font-weight:500">—</span>
-      <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--black)"><strong>Prints in</strong> <em>Your Space</em></h2>
+    <div class="card">
+      <div class="card-title">Print Options</div>
+      <div class="field">
+        <label>Print Type *</label>
+        <select id="ftype">
+          <option value="">— Select print type —</option>
+          <option value="paper">Framed Print</option>
+          
+        </select>
+      </div>
+      <div class="field">
+        <label>Size *</label>
+        <select id="fsize">
+          <option value="">— Select print type first —</option>
+        </select>
+      </div>
+      <div class="field" id="paperField">
+        <label>Paper Type *</label>
+        <select id="fpaper">
+          <option value="">— Select paper type —</option>
+          <option value="lustre">Lustre Pro — 270gsm · Pearl Finish</option>
+          <option value="matte">Enhanced Matte — 230gsm · Flat Matte ★ Popular</option>
+          <option value="cotton">Cotton Rag Archival — 280gsm · 100% Cotton</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Frame Finish *</label>
+        <select id="fframe">
+          <option value="">— Select frame finish —</option>
+          <option value="Matte Black">Matte Black</option>
+          <option value="White">White</option>
+          <option value="Natural Oak">Natural Oak</option>
+          <option value="Light Oak">Light Oak</option>
+        </select>
+      </div>
     </div>
-    <p style="font-size:14px;color:var(--g50);max-width:500px;margin-bottom:32px">See how our framed prints transform real spaces — living rooms, bedrooms, home offices and more.</p>
-  </div>
-  <!-- Featured large top row -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px">
-    <div class="mockup-item" onclick="openMockup('38.jpg')"><img src="38.jpg" alt="Home office mockup" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Home Office</div><div class="mockup-title">Observatory Print</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Observatory+%28Mt+John%2C+Lake+Tekapo%29&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('43.jpg')"><img src="43.jpg" alt="Bedroom mockup" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Bedroom</div><div class="mockup-title">Night Sky Print</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Night+Sky+%28Church+of+the+Good+Shepherd%2C+Lake+Tekapo%29&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:2px">
-    <div class="mockup-item" onclick="openMockup('40.jpg')"><img src="40.jpg" alt="Living room mockup" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Living Room</div><div class="mockup-title">Wanaka Tree</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Wanaka+Tree+%28Lake+Wanaka%29&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('41.jpg')"><img src="41.jpg" alt="Home office mockup" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Home Office</div><div class="mockup-title">Paragliding Print</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Paragliding+over+Lake+Wakatipu%2C+Queenstown&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('36.jpg')"><img src="36.jpg" alt="Dining room mockup" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Dining Room</div><div class="mockup-title">Valley Prints</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Valley+%28Lindis+Pass%2FMackenzie+Country%29&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('39.jpg')"><img src="39.jpg" alt="Lavender living room" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Living Room</div><div class="mockup-title">Lavender Fields</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Lavender+Fields%2C+Central+Otago&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-  </div>
-  <!-- bottom row -->
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:3px">
-    <div class="mockup-item" onclick="openMockup('31.jpg')"><img src="31.jpg" alt="Living room dark mockup" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Living Room</div><div class="mockup-title">B&W Gallery Wall</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=B%26W+Queenstown+Gallery+Wall+Set&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('32.jpg')"><img src="32.jpg" alt="Bedroom leaning print" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Bedroom</div><div class="mockup-title">Mackenzie Plains</div><div class="mockup-size">A3 — 297 × 420mm</div><div class="mockup-price">from $199</div><a href="order-form.html?image=Mackenzie+Plains%2C+Central+Otago&size=A3&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('49.jpg')"><img src="49.jpg" alt="Minimal grey wall" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Hallway</div><div class="mockup-title">TSS Earnslaw</div><div class="mockup-size">A3 — 297 × 420mm</div><div class="mockup-price">from $199</div><a href="order-form.html?image=TSS+Earnslaw%2C+Lake+Wakatipu&size=A3&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('50.jpg')"><img src="50.jpg" alt="Grey living room" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Living Room</div><div class="mockup-title">Lake Wakatipu</div><div class="mockup-size">A2 — 420 × 594mm</div><div class="mockup-price">from $299</div><a href="order-form.html?image=Sailboat+on+Lake+Wakatipu%2C+Queenstown&size=A2&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-    <div class="mockup-item" onclick="openMockup('51.jpg')"><img src="51.jpg" alt="Blue accent wall" style="width:100%;height:auto;display:block"><div class="mockup-overlay"></div><div class="mockup-label"><div class="mockup-tag">Study</div><div class="mockup-title">Lindis Pass</div><div class="mockup-size">A3 — 297 × 420mm</div><div class="mockup-price">from $199</div><a href="order-form.html?image=Lindis+Pass%2C+Mackenzie+Country&size=A3&print_type=Framed+Print" class="mockup-cta" target="_blank">Order this →</a></div></div>
-  </div>
-</div>
 
-<div class="divider"></div>
-
-<!-- 01 SIZES -->
-<div class="section" id="sizes">
-  <div class="sec-header"><span class="sec-num">01</span><h2 class="sec-title"><strong>Size</strong> <em>Guide</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">All sizes shown to scale. Tap any size to see where it works best in your home.</p>
-  <div class="size-box">
-    <div class="si" data-info="Perfect for a desk, bedside table, or as part of a small gallery cluster on a hallway wall." onclick="selSize(this)"><div class="sr" style="width:60px;height:85px"><span class="srl">A4</span><span class="smm">210×297</span></div><div><div class="sname">A4</div><div class="suse">Small accent</div></div></div>
-    <div class="si" data-info="The most versatile size. Works in bedrooms, studies and hallways — elegant without being overwhelming." onclick="selSize(this)"><div class="sr" style="width:85px;height:120px"><span class="srl">A3</span><span class="smm">297×420</span></div><div><div class="sname">A3</div><div class="suse">Hallway · bedroom</div></div></div>
-    <div class="si active" data-info="A commanding presence in a living room or dining space. Our best seller — stunning without overwhelming the room." onclick="selSize(this)"><div class="sr" style="width:120px;height:170px"><span class="srl">A2</span><span class="smm">420×594</span></div><div><div class="sname">A2</div><div class="suse">Living · dining</div></div></div>
-  </div>
-  <div class="size-box">
-    <div class="si" data-info="A bold, unmissable feature wall statement. At this size the Remarkables will genuinely stop people in their tracks." onclick="selSize(this)"><div class="sr" style="width:120px;height:170px"><span class="srl">A1</span><span class="smm">594×841</span></div><div><div class="sname">A1</div><div class="suse">Feature wall</div></div></div>
-    <div class="si" data-info="Grand and dramatic. Designed for large open spaces, commercial interiors, and collectors who want maximum visual impact." onclick="selSize(this)"><div class="sr" style="width:170px;height:240px"><span class="srl">A0</span><span class="smm">841×1189</span></div><div><div class="sname">A0</div><div class="suse">Grand statement</div></div></div>
-  </div>
-  <div class="sinfo-bar"><hr><span id="sInfo">A commanding presence in a living room or dining space — our best seller.</span><hr></div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 02 PAPER -->
-<div style="background:var(--stone)">
-<div class="section" id="papers">
-  <div class="sec-header"><span class="sec-num">02</span><h2 class="sec-title"><strong>Paper</strong> <em>Types</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">Three gallery-grade options, all printed on a 12-colour Epson pigment printer for exceptional depth, accuracy, and longevity.</p>
-  <div class="paper-grid">
-    <div class="paper-card"><div class="paper-name">Lustre Pro</div><div class="paper-spec">270 gsm · Pearl Finish</div><div class="paper-desc">Slightly glossy with a subtle pearl texture. Vibrant tones and excellent contrast — ideal for most photography.</div><div class="paper-divider"></div><div class="paper-best">Best for — General photography, gifting, everyday display</div></div>
-    <div class="paper-card featured"><div class="paper-badge">★ Most Popular</div><div class="paper-name">Enhanced Matte</div><div class="paper-spec">230 gsm · Flat Matte</div><div class="paper-desc">Rich, luxurious flat matte surface. No glare, no reflections — stunning under gallery lighting or in bright rooms.</div><div class="paper-divider"></div><div class="paper-best">Best for — Collectors, living rooms, gallery display</div></div>
-    <div class="paper-card"><div class="paper-name">Cotton Rag Archival</div><div class="paper-spec">280 gsm · 100% Cotton · Matte</div><div class="paper-desc">Museum-grade 100% cotton paper. The finest available — used by galleries and serious collectors worldwide.</div><div class="paper-divider"></div><div class="paper-best">Best for — Fine art, heirloom pieces, collectors</div></div>
-  </div>
-</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 03 PRICING -->
-<div class="section" id="pricing">
-  <div class="sec-header"><span class="sec-num">03</span><h2 class="sec-title"><strong>Pricing</strong></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">All prices include GST, your chosen frame, UV-acrylic glazing, 50mm mat border, and hanging hardware. <strong>Free shipping Australia-wide.</strong></p>
-  <div class="price-table">
-    <div class="price-thead c4"><div class="price-th">Size</div><div class="price-th" style="text-align:right">Lustre</div><div class="price-th" style="text-align:right">Matte</div><div class="price-th" style="text-align:right">Cotton</div></div>
-    <div class="price-row c4"><div><div class="price-size">A4</div><div class="price-dim">210 × 297 mm</div></div><div class="price-val">$149</div><div class="price-val">$169</div><div class="price-val">$189</div></div>
-    <div class="price-row c4 pop"><div><div class="price-size">A3 <span class="price-tag">Popular</span></div><div class="price-dim">297 × 420 mm</div></div><div class="price-val">$199</div><div class="price-val">$219</div><div class="price-val">$249</div></div>
-    <div class="price-row c4 pop"><div><div class="price-size">A2 <span class="price-tag">★ Most Popular</span></div><div class="price-dim">420 × 594 mm</div></div><div class="price-val">$299</div><div class="price-val">$329</div><div class="price-val">$369</div></div>
-    <div class="price-row c4"><div><div class="price-size">A1</div><div class="price-dim">594 × 841 mm</div></div><div class="price-val">$419</div><div class="price-val">$449</div><div class="price-val">$499</div></div>
-    <div class="price-row c4"><div><div class="price-size">A0</div><div class="price-dim">841 × 1189 mm</div></div><div class="price-val">$649</div><div class="price-val">$699</div><div class="price-val">$799</div></div>
-  </div>
-  <p class="price-note">Slim timber frame · UV-acrylic glazing · 50mm mat border · hanging hardware · <strong>free shipping</strong> — all included.</p>
-</div>
-
-<div class="divider"></div>
-
-<!-- 04 FRAMES -->
-<div style="background:var(--stone)">
-<div class="section" id="frames">
-  <div class="sec-header"><span class="sec-num">04</span><h2 class="sec-title"><strong>Frame</strong> <em>Finishes</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">Four handcrafted timber finishes — all included in the price. Just let me know your preference when ordering.</p>
-  <div class="frame-grid">
-    <div class="frame-card"><div class="frame-swatch" style="background:#E8F4F8"><svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg"><polygon points="80,18 140,90 140,108 80,36 20,108 20,90" fill="#1A1612"/><polygon points="80,28 132,90 132,100 80,44 28,100 28,90" fill="#2C2520"/><polygon points="80,36 126,90 126,98 80,50 34,98 34,90" fill="#3A3028"/></svg></div><div class="frame-info"><div class="frame-name">Matte Black</div><div class="frame-tone">Bold · contemporary</div></div></div>
-    <div class="frame-card"><div class="frame-swatch" style="background:#E8F4F8"><svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg"><polygon points="80,18 140,90 140,108 80,36 20,108 20,90" fill="#E8E4DC"/><polygon points="80,28 132,90 132,100 80,44 28,100 28,90" fill="#F0EDE6"/><polygon points="80,36 126,90 126,98 80,50 34,98 34,90" fill="#F5F2EC"/></svg></div><div class="frame-info"><div class="frame-name">White</div><div class="frame-tone">Clean · minimal</div></div></div>
-    <div class="frame-card"><div class="frame-swatch" style="background:#E8F4F8"><svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg"><polygon points="80,18 140,90 140,108 80,36 20,108 20,90" fill="#C4964A"/><polygon points="80,28 132,90 132,100 80,44 28,100 28,90" fill="#D4A85C"/><polygon points="80,36 126,90 126,98 80,50 34,98 34,90" fill="#DEB870"/></svg></div><div class="frame-info"><div class="frame-name">Natural Oak</div><div class="frame-tone">Warm · organic</div></div></div>
-    <div class="frame-card"><div class="frame-swatch" style="background:#E8F4F8"><svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg"><polygon points="80,18 140,90 140,108 80,36 20,108 20,90" fill="#D4C4A0"/><polygon points="80,28 132,90 132,100 80,44 28,100 28,90" fill="#E0D0B0"/><polygon points="80,36 126,90 126,98 80,50 34,98 34,90" fill="#EAD8BE"/></svg></div><div class="frame-info"><div class="frame-name">Light Oak</div><div class="frame-tone">Soft · coastal</div></div></div>
-  </div>
-  <div class="includes-grid">
-    <div class="include-card"><div class="include-tag">UV Acrylic Glazing — Included</div><div class="include-desc">Optically clear acrylic with UV protection, shielding your print from fading for decades. Lightweight and shatter-resistant.</div></div>
-    <div class="include-card"><div class="include-tag">50mm Mat Border — Included</div><div class="include-desc">A generous white bevelled mat border frames the image with gallery-style breathing room, adding depth and elegance.</div></div>
-  </div>
-  <div class="whats-grid">
-    <div class="whats-item"><span class="whats-icon">🖨</span><div class="whats-title">Gallery-grade print</div><div class="whats-desc">12-colour Epson pigment inks on your chosen fine art paper</div></div>
-    <div class="whats-item"><span class="whats-icon">🪵</span><div class="whats-title">Handmade frame</div><div class="whats-desc">Timber frame crafted to order in Australia in your chosen finish</div></div>
-    <div class="whats-item"><span class="whats-icon">🔆</span><div class="whats-title">UV-acrylic glazing</div><div class="whats-desc">Fade protection for decades of lasting colour accuracy</div></div>
-    <div class="whats-item"><span class="whats-icon">⬜</span><div class="whats-title">50mm mat border</div><div class="whats-desc">Gallery-style bevelled white mat included as standard</div></div>
-    <div class="whats-item"><span class="whats-icon">🔩</span><div class="whats-title">Ready to hang</div><div class="whats-desc">Hanging hardware pre-fitted — on your wall in minutes</div></div>
-    <div class="whats-item"><span class="whats-icon">📦</span><div class="whats-title">Shipped Australia-wide</div><div class="whats-desc">Secure packaging, delivered in 7–10 business days</div></div>
-  </div>
-</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 05 GALLERY -->
-<div class="section" id="gallery" style="padding-bottom:0">
-  <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title"><strong>The</strong> <em>Collection</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">A selection of available prints. Every image is available in any size and paper type. Click to view full size.</p>
-</div>
-<div class="gallery-grid">
-  <div class="gallery-item" onclick="openLightbox(0)"><img src="images/1.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(1)"><img src="images/2.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(2)"><img src="images/3.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(3)"><img src="images/4.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(4)"><img src="images/5.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(5)"><img src="images/6.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(6)"><img src="images/7.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(7)"><img src="images/8.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(8)"><img src="images/9.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(9)"><img src="images/10.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(10)"><img src="images/11.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(11)"><img src="images/12.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(12)"><img src="images/13.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(13)"><img src="images/14.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(14)"><img src="images/15.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(15)"><img src="images/16.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(16)"><img src="images/17.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(17)"><img src="images/18.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(18)"><img src="images/19.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(19)"><img src="images/20.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(20)"><img src="images/21.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(21)"><img src="images/22.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(22)"><img src="images/23.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(23)"><img src="images/24.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(24)"><img src="images/25.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(25)"><img src="images/26.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(26)"><img src="images/27.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(27)"><img src="images/28.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(28)"><img src="images/29.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(29)"><img src="images/30.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-</div>
-<div style="text-align:center;padding:28px 24px;background:var(--stone);border-top:1px solid var(--g90)">
-  <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--g50);margin-bottom:16px">More images available — message on Facebook to enquire about a specific scene.</p>
-  <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);padding-bottom:2px">View more on Facebook →</a>
-</div>
-
-<div class="divider"></div>
-
-<!-- 06 FAQ -->
-<div class="section" id="faq">
-  <div class="sec-header"><span class="sec-num">06</span><h2 class="sec-title"><strong>Frequently</strong> <em>Asked</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">Everything you need to know before placing your order.</p>
-  <div class="faq-list">
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I see the photo before it's printed? <span class="faq-icon">+</span></button><div class="faq-a">Yes — I'm happy to share a high-resolution preview of your chosen image cropped to your selected size before printing begins. Just mention it when you place your order.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you ship outside Australia? <span class="faq-icon">+</span></button><div class="faq-a">Currently I ship within Australia only. If you're interested in international shipping, feel free to message me on Facebook and I'll see what I can arrange.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does production and delivery take? <span class="faq-icon">+</span></button><div class="faq-a">Once full payment is confirmed, your print is produced and framed within 3–5 business days. Delivery across Australia takes a further 3–5 business days, so total time is typically 7–10 business days from payment.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What if my print arrives damaged? <span class="faq-icon">+</span></button><div class="faq-a">Every order is carefully packaged for safe delivery. In the rare case your print arrives damaged, contact me immediately with a photo and I'll organise a replacement at no cost to you.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I request a custom size or crop? <span class="faq-icon">+</span></button><div class="faq-a">Absolutely. While the standard sizes are A4 through A0, I can discuss custom dimensions. Just message me on Facebook before placing your order and we'll work something out.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I give this as a gift? <span class="faq-icon">+</span></button><div class="faq-a">Yes — prints make a beautiful gift. Let me know when ordering and I can include a gift message card and ensure the packaging is presentation-ready.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Which paper type do you recommend? <span class="faq-icon">+</span></button><div class="faq-a">Enhanced Matte is our most popular choice and a great starting point. It looks stunning in any lighting, has a luxurious feel, and suits most home interiors beautifully.</div></div>
-  </div>
-</div>
-
-<!-- CTA SECTION with room mockup background -->
-<div class="cta-section">
-  <div class="cta-bg"></div>
-  <div class="cta-overlay"></div>
-  <div class="cta-content">
-    <p class="cta-eyebrow">Ready to transform your space?</p>
-    <h2 class="cta-title">Bring Queenstown<br>into your home</h2>
-    <p class="cta-sub">Each print is handframed in Australia and arrives ready to hang. Free shipping Australia-wide on every order.</p>
-    <a href="order-form.html" class="cta-btn">Place an Order</a>
-    <a href="https://www.facebook.com/hyperdexphotography" target="_blank" class="cta-link">or message on Facebook</a>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 07 ORDER STEPS -->
-<div class="section" id="order" style="text-align:center">
-  <div class="sec-header" style="justify-content:center;margin-left:auto;margin-right:auto;margin-bottom:12px;max-width:800px"><span class="sec-num">07</span><h2 class="sec-title"><strong>How to</strong> <em>Order</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc" style="margin:0 auto 36px">Four simple steps from enquiry to your wall.</p>
-  <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-title">Choose your image</div><div class="step-desc">Browse the gallery and pick the Queenstown landscape you love</div></div>
-    <div class="step"><div class="step-num">2</div><div class="step-title">Pick your options</div><div class="step-desc">Size, paper type, and frame finish — I'll guide you if needed</div></div>
-    <div class="step"><div class="step-num">3</div><div class="step-title">Pay</div><div class="step-desc">Pay in full via PayID 0481 248 449 to confirm your order</div></div>
-    <div class="step"><div class="step-num">4</div><div class="step-title">Sit back</div><div class="step-desc">Printed, framed, and delivered to your door in 7–10 business days</div></div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 08 DELIVERY TIMELINE -->
-<div style="background:var(--stone)">
-<div class="section" id="delivery">
-  <div class="sec-header"><span class="sec-num">08</span><h2 class="sec-title"><strong>Delivery</strong> <em>Timeline</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">From the moment you pay to the moment it's on your wall.</p>
-  <div class="timeline">
-    <div class="tl-step"><div class="tl-dot">1</div><div class="tl-label">Order confirmed</div><div class="tl-desc">Payment received via PayID. Production begins same day.</div></div>
-    <div class="tl-step"><div class="tl-dot">2</div><div class="tl-label">Printing</div><div class="tl-desc">Printed on gallery-grade paper using 12-colour Epson inks.</div></div>
-    <div class="tl-step"><div class="tl-dot">3</div><div class="tl-label">Framing</div><div class="tl-desc">Handframed in Australia in your chosen finish with mat and UV glazing.</div></div>
-    <div class="tl-step"><div class="tl-dot">4</div><div class="tl-label">Dispatched</div><div class="tl-desc">Securely packaged and dispatched within 3–5 business days.</div></div>
-    <div class="tl-step"><div class="tl-dot">5</div><div class="tl-label">Delivered</div><div class="tl-desc">Arrives ready to hang. Total: 7–10 business days.</div></div>
-  </div>
-</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 09 PAYMENT -->
-<div class="section" id="payment">
-  <div class="sec-header"><span class="sec-num">09</span><h2 class="sec-title"><strong>Payment</strong> <em>Terms</em></h2><div class="sec-rule"></div></div>
-  <p class="sec-desc">Simple, transparent payment policy for every order.</p>
-  <div class="payid-highlight">
-    <div>
-      <div class="payid-label">Pay via PayID</div>
-      <div class="payid-number">0481 248 449</div>
-      <div class="payid-note">Use your full name as the payment reference.</div>
+    <div class="card">
+      <div class="card-title">Your Image</div>
+      <div class="field"><label>Which photo do you want? *</label><textarea id="fimage" placeholder="e.g. The Remarkables at sunset, the one with the lake reflection..."></textarea></div>
+      <div class="field"><label>Special Requests (optional)</label><textarea id="fnotes" placeholder="e.g. gift wrapping, cropping preferences..."></textarea></div>
     </div>
+
+    <div class="summary" id="summary">
+      <div class="summary-title">Order Summary</div>
+      <div class="summary-row"><span id="sumDesc">—</span><span id="sumPrice">—</span></div>
+      <div class="summary-total"><span>Total (inc. GST + free shipping)</span><span id="sumTotal">—</span></div>
+    </div>
+
+    <div class="payid">
+      <div class="payid-icon">📱</div>
+      <div>
+        <div class="payid-label">Payment via PayID</div>
+        <div class="payid-number">0481 248 449</div>
+        <div class="payid-note">Full payment required before production begins. Use your name as the payment reference.</div>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn">Submit Order Request</button>
+    <p class="fine-print">No cancellations once production has begun. Full payment required before shipping.</p>
+
   </div>
-  <div class="payment-grid">
-    <div class="payment-item"><span class="payment-icon">💳</span><div class="payment-title">Full payment upfront</div><div class="payment-desc">Full payment is required before production begins. Your order is confirmed once payment is received.</div></div>
-    <div class="payment-item"><span class="payment-icon">🚚</span><div class="payment-title">Ship after payment</div><div class="payment-desc">Printing and framing begins after full payment clears. Delivered in 7–10 business days from confirmation.</div></div>
-    <div class="payment-item"><span class="payment-icon">🧾</span><div class="payment-title">GST included</div><div class="payment-desc">All prices include GST. A tax invoice will be provided with your order confirmation.</div></div>
-    <div class="payment-item"><span class="payment-icon">↩️</span><div class="payment-title">Satisfaction guarantee</div><div class="payment-desc">If your print arrives damaged or faulty, get in touch and I'll make it right.</div></div>
-    <div class="payment-item"><span class="payment-icon">❌</span><div class="payment-title">No cancellations</div><div class="payment-desc">Each print is made to order. Cancellations cannot be accepted once production has begun.</div></div>
-    <div class="payment-item"><span class="payment-icon">💬</span><div class="payment-title">Questions?</div><div class="payment-desc">Message on <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="color:var(--black)">Facebook</a> or <a href="https://wa.me/61481248449" target="_blank" style="color:var(--black)">WhatsApp</a> — happy to help.</div></div>
+
+  <div class="success" id="successBox">
+    <div style="font-size:40px;margin-bottom:16px">✅</div>
+    <h2>Order Request Received!</h2>
+    <p>Thank you! I'll be in touch shortly to confirm your order. Once confirmed, please make full payment via PayID to start production.</p>
+    <div class="success-payid">
+      <div class="success-payid-label">Pay via PayID</div>
+      <div class="success-payid-num">0481 248 449</div>
+      <div class="success-ref" id="successRef"></div>
+    </div>
+    <p>Delivery in 7–10 business days from payment confirmation.<br>Questions? <a href="https://wa.me/61481248449" target="_blank">WhatsApp</a> or <a href="https://www.facebook.com/hyperdexphotography" target="_blank">Facebook</a>.</p>
   </div>
+
 </div>
-
-
-<!-- MOCKUP LIGHTBOX -->
-<div id="mockup-lb" onclick="closeMockup()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:2000;align-items:center;justify-content:center;padding:20px;cursor:zoom-out">
-  <button onclick="closeMockup()" style="position:absolute;top:16px;right:20px;font-size:36px;color:white;background:none;border:none;cursor:pointer;line-height:1">×</button>
-  <img id="mockup-lb-img" src="" style="max-width:92vw;max-height:92vh;object-fit:contain;display:block">
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightbox2()">×</button>
-  <button class="lightbox-prev" onclick="prevPhoto(event)">&#8592;</button>
-  <img id="lightbox-img" src="" alt="">
-  <button class="lightbox-next" onclick="nextPhoto(event)">&#8594;</button>
-</div>
-
-<!-- MOBILE STICKY CTA -->
-<a href="order-form.html" class="mobile-cta">Place an Order</a>
-
-<footer>
-  <span class="footer-brand">Hyperdex Photography</span>
-  <span class="footer-note">All prices include GST &nbsp;·&nbsp; Valid May 2026 &nbsp;·&nbsp; Free shipping Australia-wide &nbsp;·&nbsp; 100% satisfaction guaranteed</span>
-</footer>
 
 <script>
+var paperPrices = {
+  A4:{lustre:149,matte:169,cotton:189},
+  A3:{lustre:199,matte:219,cotton:249},
+  A2:{lustre:299,matte:329,cotton:369},
+  A1:{lustre:419,matte:449,cotton:499},
+  A0:{lustre:649,matte:699,cotton:799}
+};
+var canvasPrices = {
+  '40x27':249,'60x40':369,'90x60':549,'120x80':749
+};
+var paperLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag'};
+var canvasLabels = {
+  '40x27':'40×27cm','60x40':'60×40cm','90x60':'90×60cm','120x80':'120×80cm'
+};
 
-function openMockup(src){var lb=document.getElementById('mockup-lb');document.getElementById('mockup-lb-img').src=src;lb.style.display='flex';document.body.style.overflow='hidden';}
-function closeMockup(){document.getElementById('mockup-lb').style.display='none';document.body.style.overflow='';}
-// Hero slideshow
-var slideIndex = 0;
-var slides = document.querySelectorAll('.hero-slide');
-var dots = document.querySelectorAll('.hero-dot');
-function goSlide(n) {
-  slides[slideIndex].classList.remove('active');
-  dots[slideIndex].classList.remove('active');
-  slideIndex = n;
-  slides[slideIndex].classList.add('active');
-  dots[slideIndex].classList.add('active');
+document.getElementById('ftype').addEventListener('change', function() {
+  var type = this.value;
+  var sizeEl = document.getElementById('fsize');
+  var paperField = document.getElementById('paperField');
+
+  sizeEl.innerHTML = '';
+
+  if (type === 'paper') {
+    sizeEl.innerHTML = '<option value="">— Select size —</option>';
+    ['A4','A3','A2','A1','A0'].forEach(function(s) {
+      sizeEl.innerHTML += '<option value="' + s + '">' + s + '</option>';
+    });
+    paperField.style.display = 'block';
+  } else if (type === 'canvas') {
+    sizeEl.innerHTML = '<option value="">— Select size —</option>';
+    ['40x27','60x40','90x60','120x80'].forEach(function(k) {
+      sizeEl.innerHTML += '<option value="' + k + '">' + canvasLabels[k] + '</option>';
+    });
+    paperField.style.display = 'none';
+  } else {
+    sizeEl.innerHTML = '<option value="">— Select print type first —</option>';
+    paperField.style.display = 'none';
+  }
+  updateSummary();
+});
+
+document.getElementById('fsize').addEventListener('change', updateSummary);
+document.getElementById('fpaper').addEventListener('change', updateSummary);
+
+function updateSummary() {
+  var type = document.getElementById('ftype').value;
+  var size = document.getElementById('fsize').value;
+  var paper = document.getElementById('fpaper').value;
+  var summary = document.getElementById('summary');
+
+  var total = 0;
+  var desc = '';
+
+  if (type === 'paper' && size && paper && paperPrices[size] && paperPrices[size][paper]) {
+    total = paperPrices[size][paper];
+    desc = 'Framed Print · ' + size + ' · ' + paperLabels[paper];
+  } else if (type === 'canvas' && size && canvasPrices[size]) {
+    total = canvasPrices[size];
+    desc = 'Framed Canvas · ' + canvasLabels[size];
+  }
+
+  if (total) {
+    document.getElementById('sumDesc').textContent = desc;
+    document.getElementById('sumPrice').textContent = '$' + total;
+    document.getElementById('sumTotal').textContent = '$' + total;
+    summary.style.display = 'block';
+  } else {
+    summary.style.display = 'none';
+  }
 }
-function nextSlide() { goSlide((slideIndex + 1) % slides.length); }
-setInterval(nextSlide, 5000);
 
-function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
-function toggleFaq(btn){btn.parentElement.classList.toggle("open");}
-var photos=["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg","images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg","images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg","images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg"];
-var cur=0;
-function openLightbox(i){cur=i;document.getElementById("lightbox-img").src=photos[i];document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
-function closeLightbox(e){if(e.target===document.getElementById("lightbox"))closeLightbox2();}
-function closeLightbox2(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}
-function prevPhoto(e){e.stopPropagation();cur=(cur-1+photos.length)%photos.length;document.getElementById("lightbox-img").src=photos[cur];}
-function nextPhoto(e){e.stopPropagation();cur=(cur+1)%photos.length;document.getElementById("lightbox-img").src=photos[cur];}
-document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeLightbox2();closeMockup();};if(e.key==="ArrowLeft")prevPhoto(e);if(e.key==="ArrowRight")nextPhoto(e);});
+document.getElementById('submitBtn').addEventListener('click', async function() {
+  var name = document.getElementById('fname').value.trim();
+  var email = document.getElementById('femail').value.trim();
+  var address = document.getElementById('faddress').value.trim();
+  var type = document.getElementById('ftype').value;
+  var size = document.getElementById('fsize').value;
+  var frame = document.getElementById('fframe').value;
+  var image = document.getElementById('fimage').value.trim();
+  var paper = document.getElementById('fpaper').value;
+  var phone = document.getElementById('fphone').value.trim();
+  var notes = document.getElementById('fnotes').value.trim();
+
+  if (!name || !email || !address || !type || !size || !frame || !image) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  if (type === 'paper' && !paper) {
+    alert('Please select a paper type.');
+    return;
+  }
+
+  var btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var total = document.getElementById('sumTotal').textContent || 'TBC';
+  var typeLabel = type === 'paper' ? 'Framed Print' : 'Framed Canvas';
+  var paperLabel = type === 'paper' ? paperLabels[paper] : 'N/A';
+  var sizeLabel = type === 'canvas' ? canvasLabels[size] : size;
+
+  try {
+    var res = await fetch('https://formspree.io/f/xzdwolaa', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        name: name, email: email, phone: phone, address: address,
+        print_type: typeLabel, size: sizeLabel,
+        paper_type: paperLabel, frame_finish: frame,
+        image_description: image, special_requests: notes || 'None',
+        total_price: total,
+        _replyto: email,
+        _subject: 'Order Received — Hyperdex Photography',
+        _autoresponse: 'Hi ' + name + ',\n\nThank you for your order with Hyperdex Photography!\n\nHere is a summary of what you ordered:\n\n' +
+          '  Print Type: ' + typeLabel + '\n' +
+          '  Size: ' + sizeLabel + '\n' +
+          '  Paper: ' + paperLabel + '\n' +
+          '  Frame: ' + frame + '\n' +
+          '  Total: ' + total + '\n\n' +
+          'To confirm your order, please make full payment via PayID:\n\n' +
+          '  PayID: 0481 248 449\n' +
+          '  Reference: ' + name + '\n\n' +
+          'Once payment is received, production will begin and your print will be delivered within 7-10 business days.\n\n' +
+          'If you have any questions, feel free to message me on Facebook: facebook.com/hyperdexphotography\n\n' +
+          'Thank you,\nHyperdex Photography'
+      })
+    });
+    if (res.ok) {
+      document.getElementById('formArea').style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+      document.getElementById('successRef').textContent = 'Reference: ' + name;
+      window.scrollTo(0, 0);
+    } else {
+      alert('Something went wrong. Please try again or message us on Facebook.');
+      btn.textContent = 'Submit Order Request';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Network error. Please check your connection and try again.');
+    btn.textContent = 'Submit Order Request';
+    btn.disabled = false;
+  }
+});
+// Prefill from URL params
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('image')) {
+    document.getElementById('fimage').value = decodeURIComponent(params.get('image'));
+  }
+  if (params.get('print_type')) {
+    var type = params.get('print_type') === 'Framed Print' ? 'paper' : 'canvas';
+    document.getElementById('ftype').value = type;
+    // Trigger size population
+    var sizeEl = document.getElementById('fsize');
+    var paperField = document.getElementById('paperField');
+    sizeEl.innerHTML = '<option value="">— Select —</option>';
+    if (type === 'paper') {
+      [['A4','A4 — 210 × 297mm'],['A3','A3 — 297 × 420mm'],['A2','A2 — 420 × 594mm'],['A1','A1 — 594 × 841mm'],['A0','A0 — 841 × 1189mm']].forEach(function(s){
+        sizeEl.innerHTML += '<option value="'+s[0]+'">'+s[1]+'</option>';
+      });
+      paperField.style.display = 'block';
+    }
+    if (params.get('size')) {
+      sizeEl.value = params.get('size');
+    }
+  }
+  // Show prefilled notice
+  if (params.get('image')) {
+    var notice = document.createElement('div');
+    notice.style.cssText = 'background:#F2F0EC;border:1px solid #E4E1DB;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#4A4640;font-style:italic';
+    notice.textContent = '✓ Details prefilled from your selected print. Review and complete your details below.';
+    document.querySelector('.card').insertAdjacentElement('beforebegin', notice);
+  }
+})();
 </script>
 </body>
 </html>
