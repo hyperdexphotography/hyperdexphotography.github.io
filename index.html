@@ -162,7 +162,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* GALLERY */
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
-@media(max-width:599px){.gallery-grid{gap:2px}}
+@media(max-width:599px){.about-grid{grid-template-columns:1fr!important;gap:24px!important}}
 @media(min-width:600px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
 .gallery-item{overflow:hidden;aspect-ratio:1/1;cursor:pointer;position:relative}
 .gallery-item.tall{aspect-ratio:3/4}
@@ -285,6 +285,7 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
     <li><a href="#papers">Paper</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#payment">Payment</a></li>
   </ul>
@@ -482,9 +483,28 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
   <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);padding-bottom:2px">View more on Facebook →</a>
 </div>
 
+<!-- ABOUT -->
+<div class="divider"></div>
+<div class="section" id="about">
+  <div class="sec-header"><span class="sec-num">06</span><h2 class="sec-title"><strong>About</strong> <em>the Photographer</em></h2><div class="sec-rule"></div></div>
+  <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:8px">
+    <div style="overflow:hidden;aspect-ratio:4/5">
+      <img src="CM105188.jpg" alt="Mark — Hyperdex Photography" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block">
+    </div>
+    <div>
+      <h3 style="font-family:var(--serif);font-size:clamp(22px,2.5vw,32px);font-weight:700;color:var(--black);margin-bottom:6px">Hi, I'm Mark.</h3>
+      <p style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--g70);margin-bottom:24px">IT Consultant · Landscape Photographer</p>
+      <p style="font-family:var(--serif);font-size:16px;line-height:1.9;color:var(--g30);margin-bottom:18px">By day I work in IT consulting. By weekend, I trade the screen for wide open skies — chasing light across the valleys, lakes and mountains of New Zealand's South Island.</p>
+      <p style="font-family:var(--serif);font-size:16px;line-height:1.9;color:var(--g30);margin-bottom:18px">Every photo in this collection is 100% original — shot, edited, and printed by me. No stock imagery, no filters, no shortcuts. Just real places, real light, and a genuine love for the landscape.</p>
+      <p style="font-family:var(--serif);font-size:16px;line-height:1.9;color:var(--g30);margin-bottom:28px">When you buy a print from Hyperdex Photography, you're bringing a piece of New Zealand into your home — exactly as I saw it.</p>
+      <a href="https://www.facebook.com/hyperdexphotography" target="_blank" style="display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:2px solid var(--black);padding-bottom:3px">Follow on Facebook →</a>
+    </div>
+  </div>
+</div>
+
 <div class="divider"></div>
 
-<!-- 06 FAQ -->
+<!-- 07 FAQ -->
 <div class="section" id="faq">
   <div class="sec-header"><span class="sec-num">06</span><h2 class="sec-title"><strong>Frequently</strong> <em>Asked</em></h2><div class="sec-rule"></div></div>
   <p class="sec-desc">Everything you need to know before placing your order.</p>
