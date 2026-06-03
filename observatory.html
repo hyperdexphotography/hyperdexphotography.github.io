@@ -43,10 +43,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   position:relative;
   padding:12px;
   transition:all .4s ease;
-  background:#111111;
-  box-shadow:2px 4px 24px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.1);
+  background:#111;
+  box-shadow:4px 8px 32px rgba(0,0,0,0.4);
 }
-@media(min-width:600px){.frame-outer{padding:16px}}
+@media(min-width:600px){.frame-outer{padding:18px}}
 .mat-border{
   background:white;
   padding:20px;
@@ -181,10 +181,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
     <!-- FRAME -->
     <div class="option-label">Frame Finish <span id="frameLabel">Matte Black</span></div>
     <div class="frame-grid">
-      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#111"></div><div class="frame-name">Black</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#eee;border-bottom:1px solid #ddd"></div><div class="frame-name">White</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background:linear-gradient(135deg,#C09050,#906030)"></div><div class="frame-name">Nat. Oak</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background:linear-gradient(135deg,#D8C9AE,#C4B090)"></div><div class="frame-name">Lt. Oak</div></button>
+      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#1a1a1a"></div><div class="frame-name">Black</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#f0ede6;border:1px solid #ddd"></div><div class="frame-name">White</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');background-color:#8B5E20;background-size:200px"></div><div class="frame-name">Nat. Oak</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');background-color:#C4956A;background-size:200px"></div><div class="frame-name">Lt. Oak</div></button>
     </div>
 
     <div class="order-total">
@@ -253,8 +253,9 @@ function selSize(btn, size, dim, idx) {
   curSize = size;
   document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
   var el = document.querySelector('.frame-outer');
-el.style.background = frameStyles['Matte Black'].bg;
-el.style.boxShadow = frameStyles['Matte Black'].shadow;
+el.style.backgroundColor = '#111111';
+el.style.backgroundImage = 'none';
+el.style.boxShadow = '4px 8px 32px rgba(0,0,0,0.5)';
 updatePrices();
 }
 
@@ -268,20 +269,24 @@ function selPaper(btn, paper, label, idx) {
 
 var frameStyles = {
   'Matte Black': {
-    bg: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #111 50%, #2a2a2a 75%, #1a1a1a 100%)',
-    shadow: '2px 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)'
+    bg: '#111111',
+    bgImage: 'none',
+    shadow: '4px 8px 32px rgba(0,0,0,0.5)'
   },
   'White': {
-    bg: 'linear-gradient(135deg, #f5f2ed 0%, #fffdf9 30%, #ece8e0 60%, #f8f5ef 100%)',
-    shadow: '2px 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.8)'
+    bg: '#F0EDE6',
+    bgImage: 'none',
+    shadow: '4px 8px 32px rgba(0,0,0,0.15)'
   },
   'Natural Oak': {
-    bg: 'repeating-linear-gradient(92deg, #7a4f1e 0px, #9b6828 2px, #8a5a22 4px, #b07830 6px, #7a4f1e 8px, #a06525 12px, #8a5a22 14px, #7a4f1e 16px)',
-    shadow: '2px 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)'
+    bg: '#8B5E20',
+    bgImage: "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+    shadow: '4px 8px 32px rgba(0,0,0,0.35)'
   },
   'Light Oak': {
-    bg: 'repeating-linear-gradient(92deg, #c4956a 0px, #d4a87c 2px, #c8a070 4px, #e0bc90 6px, #c4956a 8px, #d8b080 12px, #c8a070 14px, #c4956a 16px)',
-    shadow: '2px 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2)'
+    bg: '#C4956A',
+    bgImage: "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+    shadow: '4px 8px 32px rgba(0,0,0,0.25)'
   }
 };
 function selFrame(btn, frame) {
@@ -291,7 +296,9 @@ function selFrame(btn, frame) {
   document.getElementById('frameLabel').textContent = frame;
   var s = frameStyles[frame];
   var el = document.querySelector('.frame-outer');
-  el.style.background = s.bg;
+  el.style.backgroundColor = s.bg;
+  el.style.backgroundImage = s.bgImage;
+  el.style.backgroundSize = '300px';
   el.style.boxShadow = s.shadow;
   updatePrices();
 }

@@ -41,11 +41,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .frame-preview{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:24px}
 .frame-outer{
   position:relative;
-  border:10px solid #111111;
-  transition:border-color .3s ease;
-  box-shadow:2px 4px 20px rgba(0,0,0,0.3);
+  padding:12px;
+  transition:all .4s ease;
+  background:#111;
+  box-shadow:4px 8px 32px rgba(0,0,0,0.4);
 }
-@media(min-width:600px){.frame-outer{border-width:14px}}
+@media(min-width:600px){.frame-outer{padding:18px}}
 .mat-border{
   background:white;
   padding:20px;
@@ -174,10 +175,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
     <!-- FRAME -->
     <div class="option-label">Frame Finish <span id="frameLabel">Matte Black</span></div>
     <div class="frame-grid">
-      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#111"></div><div class="frame-name">Black</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#eee;border-bottom:1px solid #ddd"></div><div class="frame-name">White</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background:linear-gradient(135deg,#C09050,#906030)"></div><div class="frame-name">Nat. Oak</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background:linear-gradient(135deg,#D8C9AE,#C4B090)"></div><div class="frame-name">Lt. Oak</div></button>
+      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#1a1a1a"></div><div class="frame-name">Black</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#f0ede6;border:1px solid #ddd"></div><div class="frame-name">White</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');background-color:#8B5E20;background-size:200px"></div><div class="frame-name">Nat. Oak</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');background-color:#C4956A;background-size:200px"></div><div class="frame-name">Lt. Oak</div></button>
     </div>
 
     <div class="order-total">
@@ -245,7 +246,10 @@ function selSize(btn, size, dim, idx) {
   btn.classList.add('active');
   curSize = size;
   document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
-  document.querySelector('.frame-outer').style.borderColor = '#111111';
+  var el = document.querySelector('.frame-outer');
+el.style.backgroundColor = '#111111';
+el.style.backgroundImage = 'none';
+el.style.boxShadow = '4px 8px 32px rgba(0,0,0,0.5)';
 updatePrices();
 }
 
@@ -257,18 +261,39 @@ function selPaper(btn, paper, label, idx) {
   updatePrices();
 }
 
-var frameColors = {
-  'Matte Black': '#111111',
-  'White': '#F0EDE6',
-  'Natural Oak': '#8B5E20',
-  'Light Oak': '#C4A06A'
+var frameStyles = {
+  'Matte Black': {
+    bg: '#111111',
+    bgImage: 'none',
+    shadow: '4px 8px 32px rgba(0,0,0,0.5)'
+  },
+  'White': {
+    bg: '#F0EDE6',
+    bgImage: 'none',
+    shadow: '4px 8px 32px rgba(0,0,0,0.15)'
+  },
+  'Natural Oak': {
+    bg: '#8B5E20',
+    bgImage: "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+    shadow: '4px 8px 32px rgba(0,0,0,0.35)'
+  },
+  'Light Oak': {
+    bg: '#C4956A',
+    bgImage: "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+    shadow: '4px 8px 32px rgba(0,0,0,0.25)'
+  }
 };
 function selFrame(btn, frame) {
   document.querySelectorAll('.frame-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   curFrame = frame;
   document.getElementById('frameLabel').textContent = frame;
-  document.querySelector('.frame-outer').style.borderColor = frameColors[frame];
+  var s = frameStyles[frame];
+  var el = document.querySelector('.frame-outer');
+  el.style.backgroundColor = s.bg;
+  el.style.backgroundImage = s.bgImage;
+  el.style.backgroundSize = '300px';
+  el.style.boxShadow = s.shadow;
   updatePrices();
 }
 
