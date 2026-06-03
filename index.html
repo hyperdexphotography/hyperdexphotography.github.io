@@ -185,10 +185,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   .gallery-label .mockup-cta{font-size:7px}
   .gallery-item[style*="aspect-ratio:3/4"]{aspect-ratio:2/3!important}
 }
-.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
-.gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.25)}
-.gallery-overlay span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:white;opacity:0;transition:opacity .3s}
-.gallery-item:hover .gallery-overlay span{opacity:1}
+.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.4)}
+.gallery-overlay .g-view{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:white;opacity:0;transition:opacity .3s}
+.gallery-overlay .g-enquire{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:white;background:transparent;border:1px solid rgba(255,255,255,0.8);padding:6px 14px;text-decoration:none;opacity:0;transition:opacity .3s;cursor:pointer;display:inline-block}
+.gallery-overlay .g-enquire:hover{background:rgba(255,255,255,0.15)}
+.gallery-item:hover .gallery-overlay .g-view,.gallery-item:hover .gallery-overlay .g-enquire{opacity:1}
 
 /* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:1000;align-items:center;justify-content:center;padding:20px}
@@ -551,6 +553,7 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
     <div>
       <div class="payid-label">Pay via PayID</div>
       <div class="payid-number">0481 248 449</div>
+      <div class="payid-note" style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6">We'll confirm your order details with you before payment is processed. No surprises.</div>
       <div class="payid-note">Use your full name as the payment reference.</div>
     </div>
   </div>
