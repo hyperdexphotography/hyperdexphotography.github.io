@@ -38,6 +38,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 @media(max-width:799px){.product-image{position:relative;top:0;height:60vw;min-height:300px}}
 .product-image img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
 .zoom-hint{position:absolute;bottom:16px;right:16px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--g70);display:flex;align-items:center;gap:6px}
+.frame-preview{padding:16px;transition:all .3s ease;box-shadow:0 8px 40px rgba(0,0,0,0.18)}
+.mat-border{background:white;padding:24px;display:flex;align-items:center;justify-content:center}
+.mat-border img{max-width:100%;max-height:50vh;object-fit:contain;display:block;cursor:zoom-in}
 
 /* DETAILS SIDE */
 .product-details{padding:48px 48px 80px;background:var(--white)}
@@ -224,7 +227,8 @@ function selSize(btn, size, dim, idx) {
   btn.classList.add('active');
   curSize = size;
   document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
-  updatePrices();
+  document.getElementById('framePreview').style.background = '#1A1612';
+updatePrices();
 }
 
 function selPaper(btn, paper, label, idx) {
@@ -235,11 +239,18 @@ function selPaper(btn, paper, label, idx) {
   updatePrices();
 }
 
+var frameColors = {
+  'Matte Black': '#1A1612',
+  'White': '#E8E4DC',
+  'Natural Oak': '#B07830',
+  'Light Oak': '#C8B48C'
+};
 function selFrame(btn, frame) {
   document.querySelectorAll('.frame-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   curFrame = frame;
   document.getElementById('frameLabel').textContent = frame;
+  document.getElementById('framePreview').style.background = frameColors[frame];
   updatePrices();
 }
 
