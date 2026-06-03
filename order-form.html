@@ -10,7 +10,7 @@
 body{font-family:Arial,sans-serif;background:#F8F7F5;color:#0C0C0C;font-size:15px;line-height:1.6}
 nav{background:#fff;border-bottom:1px solid #E8E6E2;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:10}
 .nav-brand a{display:block;font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;text-decoration:none;color:#0C0C0C}
-.nav-fb{font-size:10px;color:#7D7870;text-decoration:none;display:flex;align-items:center;gap:5px;margin-top:2px;letter-spacing:.1em}.nav-fb:hover{color:#8B7355}
+.nav-fb{font-size:10px;color:#7D7870;text-decoration:none;display:flex;align-items:center;gap:5px;margin-top:2px;letter-spacing:.1em;font-weight:500}.nav-fb:hover{color:#8B7355}
 .fb-icon{width:14px;height:14px;border-radius:2px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle}
 .fb-icon img{width:100%;height:100%;object-fit:cover}
 .back-btn{font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#7A7874;border:1px solid #E8E6E2;padding:8px 16px}
@@ -57,7 +57,7 @@ h1 em{font-style:italic;font-weight:400;color:#7A7874}
   <div class="nav-brand">
     <a href="index.html">Hyperdex Photography</a>
     <a href="https://www.facebook.com/hyperdexphotography" target="_blank" class="nav-fb">
-      <span class="fb-icon"><img src="favicon.jpg" alt="Hyperdex Logo"></span><span>F<span style="font-size:8px;letter-spacing:.1em">ACEBOOK</span></span>
+      <span class="fb-icon"><img src="favicon.jpg" alt="Hyperdex Logo"></span>FACEBOOK
     </a>
   </div>
   <a href="index.html" class="back-btn">← Back to Price List</a>
@@ -307,7 +307,6 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
   if (params.get('print_type')) {
     var type = params.get('print_type') === 'Framed Print' ? 'paper' : 'canvas';
     document.getElementById('ftype').value = type;
-    // Trigger size population
     var sizeEl = document.getElementById('fsize');
     var paperField = document.getElementById('paperField');
     sizeEl.innerHTML = '<option value="">— Select —</option>';
@@ -321,8 +320,27 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
       sizeEl.value = params.get('size');
     }
   }
-  // Show prefilled notice
-  if (params.get('image')) {
+  // Prefill paper type
+  if (params.get('paper')) {
+    var paper = decodeURIComponent(params.get('paper'));
+    var paperEl = document.getElementById('fpaper');
+    var paperMap = {'Lustre Pro':'lustre','Enhanced Matte':'matte','Cotton Rag Archival':'cotton'};
+    if (paperMap[paper]) paperEl.value = paperMap[paper];
+  }
+  // Prefill frame finish
+  if (params.get('frame')) {
+    var frame = decodeURIComponent(params.get('frame'));
+    var frameEl = document.getElementById('fframe');
+    for (var i = 0; i < frameEl.options.length; i++) {
+      if (frameEl.options[i].value === frame || frameEl.options[i].text === frame) {
+        frameEl.value = frameEl.options[i].value;
+        break;
+      }
+    }
+  }
+  // Trigger summary update
+  if (params.get('image') || params.get('size')) {
+    updateSummary();
     var notice = document.createElement('div');
     notice.style.cssText = 'background:#F2F0EC;border:1px solid #E4E1DB;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#4A4640;font-style:italic';
     notice.textContent = '✓ Details prefilled from your selected print. Review and complete your details below.';
