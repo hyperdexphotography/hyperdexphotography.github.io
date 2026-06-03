@@ -27,6 +27,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .fb-icon{width:14px;height:14px;border-radius:2px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle}
 .fb-icon img{width:100%;height:100%;object-fit:cover}
 .nav-links{display:flex;gap:24px;list-style:none}
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);transition:all .3s}
+@media(max-width:599px){.hamburger{display:flex}}
+.mobile-nav{display:none;position:fixed;top:56px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--g90);z-index:199;padding:8px 0;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:14px 24px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--g90)}
+.mobile-nav a.menu-order{border-bottom:none;background:var(--black);color:var(--white);text-align:center;margin:12px 16px 8px;padding:14px;display:block}
+.mobile-nav a.menu-order:hover{background:var(--gold)}
+.menu-overlay{display:none;position:fixed;inset:0;z-index:198;background:rgba(0,0,0,0.3)}
+.menu-overlay.open{display:block}
 @media(max-width:599px){.nav-links{display:none}}
 .nav-links a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g50);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--black)}
@@ -289,8 +300,24 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#payment">Payment</a></li>
   </ul>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <a href="order-form.html" class="nav-order">Place an Order</a>
 </nav>
+
+<!-- MOBILE NAV DROPDOWN -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#sizes" onclick="closeMenu()">Sizes</a>
+  <a href="#papers" onclick="closeMenu()">Paper</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#payment" onclick="closeMenu()">Payment</a>
+  <a href="order-form.html" class="menu-order">Place an Order</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -627,6 +654,8 @@ function goSlide(n) {
 function nextSlide() { goSlide((slideIndex + 1) % slides.length); }
 setInterval(nextSlide, 5000);
 
+function toggleMenu(){var m=document.getElementById('mobileNav');var o=document.getElementById('menuOverlay');m.classList.toggle('open');o.classList.toggle('open');}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');}
 function selSize(el){document.querySelectorAll(".si").forEach(s=>s.classList.remove("active"));el.classList.add("active");document.getElementById("sInfo").textContent=el.dataset.info;}
 function toggleFaq(btn){btn.parentElement.classList.toggle("open");}
 var photos=["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg","images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg","images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg","images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg"];
