@@ -38,9 +38,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 @media(max-width:799px){.product-image{position:relative;top:0;height:60vw;min-height:300px}}
 .product-image img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
 .zoom-hint{position:absolute;bottom:16px;right:16px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--g70);display:flex;align-items:center;gap:6px}
-.frame-preview{padding:16px;transition:all .3s ease;box-shadow:0 8px 40px rgba(0,0,0,0.18)}
-.mat-border{background:white;padding:24px;display:flex;align-items:center;justify-content:center}
-.mat-border img{max-width:100%;max-height:50vh;object-fit:contain;display:block;cursor:zoom-in}
+.frame-preview{display:inline-block;position:relative;box-shadow:0 12px 48px rgba(0,0,0,0.25)}
+.frame-outer{padding:14px;transition:background .3s ease;background:#1A1612}
+.mat-border{background:white;padding:28px;display:flex}
+.mat-border img{max-width:100%;max-height:45vh;object-fit:contain;display:block;cursor:zoom-in}
+/* Frame edge shading for 3D effect */
+.frame-outer::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}
 
 /* DETAILS SIDE */
 .product-details{padding:48px 48px 80px;background:var(--white)}
@@ -113,8 +116,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
   <!-- IMAGE -->
   <div class="product-image">
     <div class="frame-preview" id="framePreview">
-      <div class="mat-border">
-        <img src="2.jpg" alt="Mt. John Observatory, Tekapo New Zealand" onclick="document.getElementById('lb').classList.add('open')">
+      <div class="frame-outer" id="frameOuter">
+        <div class="mat-border">
+          <img src="2.jpg" alt="Mt. John Observatory, Tekapo New Zealand" onclick="document.getElementById('lb').classList.add('open')">
+        </div>
       </div>
     </div>
     <div class="zoom-hint">🔍 Click to zoom</div>
@@ -231,7 +236,7 @@ function selSize(btn, size, dim, idx) {
   btn.classList.add('active');
   curSize = size;
   document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
-  document.getElementById('framePreview').style.background = '#1A1612';
+  document.querySelector('.frame-outer').style.background = '#1A1612';
 updatePrices();
 }
 
@@ -254,7 +259,7 @@ function selFrame(btn, frame) {
   btn.classList.add('active');
   curFrame = frame;
   document.getElementById('frameLabel').textContent = frame;
-  document.getElementById('framePreview').style.background = frameColors[frame];
+  document.querySelector('.frame-outer').style.background = frameColors[frame];
   updatePrices();
 }
 
