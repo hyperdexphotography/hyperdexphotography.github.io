@@ -38,12 +38,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 @media(max-width:799px){.product-image{position:relative;top:0;height:60vw;min-height:300px}}
 .product-image img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
 .zoom-hint{position:absolute;bottom:16px;right:16px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--g70);display:flex;align-items:center;gap:6px}
-.frame-preview{display:inline-block;position:relative;box-shadow:0 12px 48px rgba(0,0,0,0.25)}
-.frame-outer{padding:14px;transition:background .3s ease;background:#1A1612}
-.mat-border{background:white;padding:28px;display:flex}
-.mat-border img{max-width:100%;max-height:45vh;object-fit:contain;display:block;cursor:zoom-in}
-/* Frame edge shading for 3D effect */
-.frame-outer::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}
+.frame-preview{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.frame-outer{
+  position:relative;
+  padding:28px;
+  transition:background .4s ease, box-shadow .4s ease;
+  background:#1A1612;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.08),
+    inset 3px 3px 8px rgba(255,255,255,0.12),
+    inset -3px -3px 8px rgba(0,0,0,0.4),
+    0 20px 60px rgba(0,0,0,0.5);
+  max-width:85%;
+}
+.mat-border{
+  background:white;
+  padding:32px;
+  box-shadow:inset 0 0 12px rgba(0,0,0,0.08);
+}
+.mat-border img{
+  width:100%;
+  height:auto;
+  display:block;
+  cursor:zoom-in;
+  max-height:40vh;
+  object-fit:cover;
+}
 
 /* DETAILS SIDE */
 .product-details{padding:48px 48px 80px;background:var(--white)}
@@ -243,10 +263,10 @@ function selPaper(btn, paper, label, idx) {
 }
 
 var frameColors = {
-  'Matte Black': '#1A1612',
-  'White': '#E8E4DC',
-  'Natural Oak': '#B07830',
-  'Light Oak': '#C8B48C'
+  'Matte Black': '#111111',
+  'White': '#F0EDE6',
+  'Natural Oak': '#9B6A28',
+  'Light Oak': '#C8A96E'
 };
 function selFrame(btn, frame) {
   document.querySelectorAll('.frame-btn').forEach(b => b.classList.remove('active'));
