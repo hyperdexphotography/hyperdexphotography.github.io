@@ -183,8 +183,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
     <div class="frame-grid">
       <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#1a1a1a"></div><div class="frame-name">Black</div></button>
       <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#f0ede6;border:1px solid #ddd"></div><div class="frame-name">White</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');background-color:#7B3F2A;background-size:200px"></div><div class="frame-name">Nat. Oak</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');background-color:#D4B896;background-size:200px"></div><div class="frame-name">Lt. Oak</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background:url('https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=400&auto=format&fit=crop&q=60') center/cover"></div><div class="frame-name">Nat. Oak</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop&q=60') center/cover"></div><div class="frame-name">Lt. Oak</div></button>
     </div>
 
     <div class="order-total">
@@ -253,9 +253,8 @@ function selSize(btn, size, dim, idx) {
   curSize = size;
   document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
   var el = document.querySelector('.frame-outer');
-el.style.backgroundColor = '#111111';
-el.style.backgroundImage = 'none';
-el.style.boxShadow = '4px 8px 32px rgba(0,0,0,0.5)';
+el.style.background = '#1a1a1a';
+el.style.boxShadow = '6px 10px 40px rgba(0,0,0,0.6)';
 updatePrices();
 }
 
@@ -271,22 +270,26 @@ var frameStyles = {
   'Matte Black': {
     bg: '#1a1a1a',
     bgImage: 'none',
-    shadow: '4px 8px 32px rgba(0,0,0,0.5)'
+    shadow: '6px 10px 40px rgba(0,0,0,0.6)',
+    swatchBg: '#1a1a1a'
   },
   'White': {
     bg: '#f0ede6',
     bgImage: 'none',
-    shadow: '4px 8px 32px rgba(0,0,0,0.12)'
+    shadow: '6px 10px 40px rgba(0,0,0,0.15)',
+    swatchBg: '#f0ede6'
   },
   'Natural Oak': {
-    bg: '#7B3F2A',
-    bgImage: "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
-    shadow: '4px 8px 32px rgba(0,0,0,0.35)'
+    bg: 'url("https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=400&auto=format&fit=crop&q=60") center/cover',
+    bgImage: 'none',
+    shadow: '6px 10px 40px rgba(0,0,0,0.4)',
+    swatchBg: 'url("https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=400&auto=format&fit=crop&q=60") center/cover'
   },
   'Light Oak': {
-    bg: '#D4B896',
-    bgImage: "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
-    shadow: '4px 8px 32px rgba(0,0,0,0.2)'
+    bg: 'url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop&q=60") center/cover',
+    bgImage: 'none',
+    shadow: '6px 10px 40px rgba(0,0,0,0.25)',
+    swatchBg: 'url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop&q=60") center/cover'
   }
 };
 function selFrame(btn, frame) {
@@ -296,9 +299,7 @@ function selFrame(btn, frame) {
   document.getElementById('frameLabel').textContent = frame;
   var s = frameStyles[frame];
   var el = document.querySelector('.frame-outer');
-  el.style.backgroundColor = s.bg;
-  el.style.backgroundImage = s.bgImage;
-  el.style.backgroundSize = '300px';
+  el.style.background = s.bg;
   el.style.boxShadow = s.shadow;
   updatePrices();
 }
