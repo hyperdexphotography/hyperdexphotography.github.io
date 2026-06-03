@@ -162,6 +162,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 
 /* GALLERY */
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+@media(max-width:599px){.gallery-grid{gap:2px}}
 @media(min-width:600px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
 .gallery-item{overflow:hidden;aspect-ratio:1/1;cursor:pointer;position:relative}
 .gallery-item.tall{aspect-ratio:3/4}
@@ -173,6 +174,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .gallery-label .mockup-size{text-align:center}
 .gallery-label .mockup-price{text-align:center}
 .gallery-label .mockup-cta{display:block;text-align:center}
+.gallery-below{padding:16px 12px;text-align:center;background:var(--white);border-top:1px solid var(--g90)}
+.gallery-below-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--g50);margin-bottom:4px}
+.gallery-below-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--black);margin-bottom:4px}
+.gallery-below-meta{font-size:11px;letter-spacing:.08em;color:var(--g70);margin-bottom:10px}
+.gallery-below-order{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);padding-bottom:2px}
+.gallery-below-order:hover{color:var(--gold);border-color:var(--gold)}
+.mobile-only{display:block}
+.desktop-only{display:none}
+@media(min-width:600px){.mobile-only{display:none}.desktop-only{display:block}}
 @media(max-width:599px){
   .gallery-label{padding:10px}
   .gallery-label .mockup-tag{font-size:7px}
@@ -445,31 +455,47 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
 <div class="divider"></div>
 
 <!-- 05 GALLERY -->
-<div class="section" id="gallery" style="padding-bottom:0">
+<div class="section" id="gallery" style="padding-bottom:0;padding-top:40px">
   <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title"><strong>The</strong> <em>Collection</em></h2><div class="sec-rule"></div></div>
   <p class="sec-desc">A selection of available prints. Every image is available in any size and paper type. Click to view full size.</p>
 </div>
 <div class="gallery-grid" style="grid-template-columns:repeat(2,1fr)">
-  <div class="gallery-item" style="aspect-ratio:3/4;position:relative">
-    <img src="2.jpg" alt="Mt. John Observatory, Tekapo New Zealand" style="width:100%;height:100%;object-fit:contain;background:#f5f5f5;display:block">
-    <div class="mockup-overlay"></div>
-    <div class="gallery-label">
-      <div class="mockup-tag">Tekapo, New Zealand</div>
-      <div class="mockup-title">Mt. John Observatory</div>
-      <div class="mockup-size">A2 — 420 × 594mm</div>
-      <div class="mockup-price">from $299</div>
-      <a href="order-form.html?image=Mt.+John+Observatory%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" class="mockup-cta">Order Now →</a>
+  <div style="position:relative;cursor:pointer" onclick="openMockup('2.jpg')">
+    <div class="gallery-item" style="aspect-ratio:3/4;position:relative">
+      <img src="2.jpg" alt="Mt. John Observatory, Tekapo New Zealand" style="width:100%;height:100%;object-fit:contain;background:#f5f5f5;display:block">
+      <div class="mockup-overlay"></div>
+      <div class="gallery-label mobile-only">
+        <div class="mockup-tag">Tekapo, New Zealand</div>
+        <div class="mockup-title">Mt. John Observatory</div>
+        <div class="mockup-size">A2 — 420 × 594mm</div>
+        <div class="mockup-price">from $299</div>
+        <a href="order-form.html?image=Mt.+John+Observatory%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" class="mockup-cta" onclick="event.stopPropagation()">Order Now →</a>
+      </div>
+    </div>
+    <div class="gallery-below desktop-only">
+      <div class="gallery-below-tag">Tekapo, New Zealand</div>
+      <div class="gallery-below-title">Mt. John Observatory</div>
+      <div class="gallery-below-meta">A2 — 420 × 594mm &nbsp;·&nbsp; from $299</div>
+      <a href="order-form.html?image=Mt.+John+Observatory%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" class="gallery-below-order" onclick="event.stopPropagation()">Order Now →</a>
     </div>
   </div>
-  <div class="gallery-item" style="aspect-ratio:3/4;position:relative">
-    <img src="3.jpg" alt="Church of Good Shepherd, Tekapo New Zealand" style="width:100%;height:100%;object-fit:contain;background:#f5f5f5;display:block">
-    <div class="mockup-overlay"></div>
-    <div class="gallery-label">
-      <div class="mockup-tag">Tekapo, New Zealand</div>
-      <div class="mockup-title">Church of Good Shepherd</div>
-      <div class="mockup-size">A2 — 420 × 594mm</div>
-      <div class="mockup-price">from $299</div>
-      <a href="order-form.html?image=Church+of+Good+Shepherd%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" class="mockup-cta">Order Now →</a>
+  <div style="position:relative;cursor:pointer" onclick="openMockup('3.jpg')">
+    <div class="gallery-item" style="aspect-ratio:3/4;position:relative">
+      <img src="3.jpg" alt="Church of Good Shepherd, Tekapo New Zealand" style="width:100%;height:100%;object-fit:contain;background:#f5f5f5;display:block">
+      <div class="mockup-overlay"></div>
+      <div class="gallery-label mobile-only">
+        <div class="mockup-tag">Tekapo, New Zealand</div>
+        <div class="mockup-title">Church of Good Shepherd</div>
+        <div class="mockup-size">A2 — 420 × 594mm</div>
+        <div class="mockup-price">from $299</div>
+        <a href="order-form.html?image=Church+of+Good+Shepherd%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" class="mockup-cta" onclick="event.stopPropagation()">Order Now →</a>
+      </div>
+    </div>
+    <div class="gallery-below desktop-only">
+      <div class="gallery-below-tag">Tekapo, New Zealand</div>
+      <div class="gallery-below-title">Church of Good Shepherd</div>
+      <div class="gallery-below-meta">A2 — 420 × 594mm &nbsp;·&nbsp; from $299</div>
+      <a href="order-form.html?image=Church+of+Good+Shepherd%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" class="gallery-below-order" onclick="event.stopPropagation()">Order Now →</a>
     </div>
   </div>
 </div>
