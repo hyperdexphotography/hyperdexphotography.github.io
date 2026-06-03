@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Church of Good Shepherd, Tekapo — Hyperdex Photography</title>
+<meta name="description" content="Fine art landscape print of Church of Good Shepherd at Lake Tekapo, New Zealand. Gallery-grade, handframed in Australia. Free shipping Australia-wide.">
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --black:#0A0A0A;--white:#FFFFFF;--cream:#FAF9F6;--stone:#F2F0EC;
+  --g90:#E4E1DB;--g70:#B5B0A8;--g50:#7D7870;--g30:#4A4640;--gold:#8B7355;
+  --serif:Georgia,"Times New Roman",serif;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:64px}
+@media(max-width:599px){body{padding-top:56px}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--g90);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+@media(max-width:599px){nav{padding:0 16px;height:56px}}
+.nav-left{display:flex;flex-direction:column;gap:2px}
+.nav-brand{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-fb{font-size:10px;color:var(--g50);text-decoration:none;display:flex;align-items:center;gap:5px}
+.nav-fb:hover{color:var(--gold)}
+.fb-icon{width:14px;height:14px;border-radius:2px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle}
+.fb-icon img{width:100%;height:100%;object-fit:cover}
+.back-btn{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g50);text-decoration:none;border:1px solid var(--g90);padding:8px 16px;white-space:nowrap}
+.back-btn:hover{color:var(--black);border-color:var(--black)}
+
+/* PRODUCT LAYOUT */
+.product{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
+@media(max-width:799px){.product{grid-template-columns:1fr}}
+
+/* IMAGE SIDE */
+.product-image{position:sticky;top:64px;height:calc(100vh - 64px);background:var(--stone);display:flex;align-items:center;justify-content:center;padding:32px;overflow:hidden}
+@media(max-width:799px){.product-image{position:relative;top:0;height:60vw;min-height:300px}}
+.product-image img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
+.zoom-hint{position:absolute;bottom:16px;right:16px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--g70);display:flex;align-items:center;gap:6px}
+
+/* DETAILS SIDE */
+.product-details{padding:48px 48px 80px;background:var(--white)}
+@media(max-width:799px){.product-details{padding:32px 20px 60px}}
+.product-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--g50);margin-bottom:12px}
+.product-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--black);line-height:1.1;margin-bottom:6px}
+.product-location{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--g50);margin-bottom:24px}
+.product-price{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--black);margin-bottom:4px}
+.product-price-note{font-size:12px;color:var(--g70);margin-bottom:32px}
+.divider{height:1px;background:var(--g90);margin:28px 0}
+
+/* OPTIONS */
+.option-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.option-label span{font-weight:400;color:var(--g50);text-transform:none;letter-spacing:0;font-size:12px}
+.size-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:24px}
+.size-btn{border:1px solid var(--g90);background:var(--white);padding:10px 4px;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--black);cursor:pointer;text-align:center;transition:all .15s}
+.size-btn:hover{border-color:var(--black)}
+.size-btn.active{border-color:var(--black);border-width:2px;background:var(--black);color:var(--white)}
+.size-dim{font-size:8px;font-weight:400;display:block;margin-top:2px;opacity:.7}
+.paper-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:24px}
+.paper-btn{border:1px solid var(--g90);background:var(--white);padding:14px 16px;font-size:13px;color:var(--black);cursor:pointer;text-align:left;transition:all .15s;display:flex;justify-content:space-between;align-items:center}
+.paper-btn:hover{border-color:var(--black)}
+.paper-btn.active{border-color:var(--black);border-width:2px}
+.paper-btn-name{font-weight:600;font-size:13px}
+.paper-btn-spec{font-size:11px;color:var(--g70);margin-top:2px}
+.paper-btn-price{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--black);flex-shrink:0;margin-left:12px}
+
+/* FRAME */
+.frame-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px}
+.frame-btn{border:1px solid var(--g90);background:var(--white);cursor:pointer;transition:all .15s;overflow:hidden;text-align:center}
+.frame-btn:hover{border-color:var(--g70)}
+.frame-btn.active{border-color:var(--black);border-width:2px}
+.frame-swatch{height:40px}
+.frame-name{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--black);padding:6px 4px}
+
+/* ORDER BUTTON */
+.order-total{display:flex;justify-content:space-between;align-items:center;padding:16px 0;margin-bottom:16px;border-top:1px solid var(--g90);border-bottom:1px solid var(--g90)}
+.order-total-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--g50)}
+.order-total-price{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--black)}
+.order-btn{display:block;width:100%;padding:18px;background:var(--black);color:var(--white);border:none;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;margin-bottom:12px;transition:background .2s}
+.order-btn:hover{background:var(--gold)}
+.order-note{font-size:12px;color:var(--g70);text-align:center;line-height:1.6}
+
+/* DESCRIPTION */
+.product-desc{font-size:14px;line-height:1.85;color:var(--g30);margin-bottom:20px;font-family:var(--serif)}
+.product-includes{list-style:none;display:grid;gap:8px}
+.product-includes li{font-size:13px;color:var(--g50);display:flex;align-items:center;gap:10px}
+.product-includes li::before{content:"✓";color:var(--black);font-weight:700;flex-shrink:0}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:1000;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:92vh;object-fit:contain}
+.lightbox-close{position:absolute;top:16px;right:20px;font-size:36px;color:white;background:none;border:none;cursor:pointer}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.html" class="nav-brand">Hyperdex Photography</a>
+    <a href="https://www.facebook.com/hyperdexphotography" target="_blank" class="nav-fb">
+      <span class="fb-icon"><img src="favicon.jpg" alt="Hyperdex Logo"></span><span>F<span style="font-size:8px;letter-spacing:.1em">ACEBOOK</span></span>
+    </a>
+  </div>
+  <a href="index.html" class="back-btn">← Back</a>
+</nav>
+
+<div class="product">
+  <!-- IMAGE -->
+  <div class="product-image">
+    <img src="3.jpg" alt="Church of Good Shepherd, Tekapo New Zealand" onclick="document.getElementById('lb').classList.add('open')">
+    <div class="zoom-hint">🔍 Click to zoom</div>
+  </div>
+
+  <!-- DETAILS -->
+  <div class="product-details">
+    <p class="product-eyebrow">Fine Art Landscape Print</p>
+    <h1 class="product-title">Church of Good Shepherd</h1>
+    <p class="product-location">Lake Tekapo, New Zealand</p>
+    <div class="product-price" id="displayPrice">from $149</div>
+    <div class="product-price-note">Inc. GST · Free shipping Australia-wide</div>
+
+    <div class="divider"></div>
+
+    <!-- SIZE -->
+    <div class="option-label">Size <span id="sizeLabel">A4 — 210 × 297mm</span></div>
+    <div class="size-grid">
+      <button class="size-btn active" onclick="selSize(this,'A4','210×297mm',0)">A4<span class="size-dim">210×297</span></button>
+      <button class="size-btn" onclick="selSize(this,'A3','297×420mm',1)">A3<span class="size-dim">297×420</span></button>
+      <button class="size-btn" onclick="selSize(this,'A2','420×594mm',2)">A2<span class="size-dim">420×594</span></button>
+      <button class="size-btn" onclick="selSize(this,'A1','594×841mm',3)">A1<span class="size-dim">594×841</span></button>
+      <button class="size-btn" onclick="selSize(this,'A0','841×1189mm',4)">A0<span class="size-dim">841×1189</span></button>
+    </div>
+
+    <!-- PAPER -->
+    <div class="option-label">Paper Type <span id="paperLabel">Lustre Pro</span></div>
+    <div class="paper-grid">
+      <button class="paper-btn active" onclick="selPaper(this,'lustre','Lustre Pro',0)">
+        <div><div class="paper-btn-name">Lustre Pro</div><div class="paper-btn-spec">270gsm · Pearl Finish</div></div>
+        <div class="paper-btn-price" id="p0">$149</div>
+      </button>
+      <button class="paper-btn" onclick="selPaper(this,'matte','Enhanced Matte',1)">
+        <div><div class="paper-btn-name">Enhanced Matte ★</div><div class="paper-btn-spec">230gsm · Flat Matte · Most Popular</div></div>
+        <div class="paper-btn-price" id="p1">$169</div>
+      </button>
+      <button class="paper-btn" onclick="selPaper(this,'cotton','Cotton Rag Archival',2)">
+        <div><div class="paper-btn-name">Cotton Rag Archival</div><div class="paper-btn-spec">280gsm · 100% Cotton · Museum Grade</div></div>
+        <div class="paper-btn-price" id="p2">$189</div>
+      </button>
+    </div>
+
+    <!-- FRAME -->
+    <div class="option-label">Frame Finish <span id="frameLabel">Matte Black</span></div>
+    <div class="frame-grid">
+      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#111"></div><div class="frame-name">Black</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#eee;border-bottom:1px solid #ddd"></div><div class="frame-name">White</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background:linear-gradient(135deg,#C09050,#906030)"></div><div class="frame-name">Nat. Oak</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background:linear-gradient(135deg,#D8C9AE,#C4B090)"></div><div class="frame-name">Lt. Oak</div></button>
+    </div>
+
+    <div class="order-total">
+      <span class="order-total-label">Total (inc. GST)</span>
+      <span class="order-total-price" id="totalPrice">$149</span>
+    </div>
+
+    <a href="#" class="order-btn" id="orderBtn">Place an Order</a>
+    <p class="order-note">Full payment via PayID before production · 7–10 business days delivery</p>
+
+    <div class="divider"></div>
+
+    <p class="product-desc">Perched high above the glacial waters of Lake Tekapo, the Church of Good Shepherd stands as a sentinel between earth and sky. This image captures the church's iconic dome against a backdrop of snow-capped Southern Alps and the impossibly blue hues of New Zealand's Mackenzie Basin — a landscape that feels almost otherworldly in its beauty. Printed on gallery-grade paper and handframed in Australia, this piece brings the serene grandeur of the South Island into your home.</p>
+
+    <div class="divider"></div>
+
+    <ul class="product-includes">
+      <li>Gallery-grade fine art print (12-colour Epson pigment inks)</li>
+      <li>Handcrafted timber frame in your chosen finish</li>
+      <li>UV-acrylic glazing for lasting colour protection</li>
+      <li>50mm white bevelled mat border</li>
+      <li>Hanging hardware pre-fitted — ready to hang</li>
+      <li>Free shipping Australia-wide</li>
+      <li>GST included in all prices</li>
+    </ul>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb" onclick="this.classList.remove('open')">
+  <button class="lightbox-close" onclick="document.getElementById('lb').classList.remove('open')">×</button>
+  <img src="3.jpg" alt="Church of Good Shepherd">
+</div>
+
+<script>
+var prices = {
+  A4:  {lustre:149, matte:169, cotton:189},
+  A3:  {lustre:199, matte:219, cotton:249},
+  A2:  {lustre:299, matte:329, cotton:369},
+  A1:  {lustre:419, matte:449, cotton:499},
+  A0:  {lustre:649, matte:699, cotton:799}
+};
+var curSize = 'A4', curPaper = 'lustre', curFrame = 'Matte Black';
+
+function updatePrices() {
+  var row = prices[curSize];
+  document.getElementById('p0').textContent = '$' + row.lustre;
+  document.getElementById('p1').textContent = '$' + row.matte;
+  document.getElementById('p2').textContent = '$' + row.cotton;
+  var total = row[curPaper];
+  document.getElementById('totalPrice').textContent = '$' + total;
+  document.getElementById('displayPrice').textContent = '$' + total;
+  updateOrderLink(total);
+}
+
+function updateOrderLink(total) {
+  var sizeDims = {A4:'210×297mm',A3:'297×420mm',A2:'420×594mm',A1:'594×841mm',A0:'841×1189mm'};
+  var paperLabels = {lustre:'Lustre Pro',matte:'Enhanced Matte',cotton:'Cotton Rag Archival'};
+  var url = 'order-form.html?image=Church+of+Good+Shepherd%2C+Tekapo+New+Zealand&size=' + curSize + '&print_type=Framed+Print&paper=' + encodeURIComponent(paperLabels[curPaper]) + '&frame=' + encodeURIComponent(curFrame) + '&total=$' + total;
+  document.getElementById('orderBtn').href = url;
+}
+
+function selSize(btn, size, dim, idx) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  curSize = size;
+  document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
+  updatePrices();
+}
+
+function selPaper(btn, paper, label, idx) {
+  document.querySelectorAll('.paper-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  curPaper = paper;
+  document.getElementById('paperLabel').textContent = label;
+  updatePrices();
+}
+
+function selFrame(btn, frame) {
+  document.querySelectorAll('.frame-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  curFrame = frame;
+  document.getElementById('frameLabel').textContent = frame;
+  updatePrices();
+}
+
+updatePrices();
+</script>
+</body>
+</html>
