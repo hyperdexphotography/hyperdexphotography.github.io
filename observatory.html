@@ -41,11 +41,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .frame-preview{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:24px}
 .frame-outer{
   position:relative;
-  border:10px solid #111111;
-  transition:border-color .3s ease;
-  box-shadow:2px 4px 20px rgba(0,0,0,0.3);
+  padding:12px;
+  transition:all .4s ease;
+  background:#111111;
+  box-shadow:2px 4px 24px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.1);
 }
-@media(min-width:600px){.frame-outer{border-width:14px}}
+@media(min-width:600px){.frame-outer{padding:16px}}
 .mat-border{
   background:white;
   padding:20px;
@@ -251,7 +252,9 @@ function selSize(btn, size, dim, idx) {
   btn.classList.add('active');
   curSize = size;
   document.getElementById('sizeLabel').textContent = size + ' — ' + dim;
-  document.querySelector('.frame-outer').style.borderColor = '#111111';
+  var el = document.querySelector('.frame-outer');
+el.style.background = frameStyles['Matte Black'].bg;
+el.style.boxShadow = frameStyles['Matte Black'].shadow;
 updatePrices();
 }
 
@@ -263,18 +266,33 @@ function selPaper(btn, paper, label, idx) {
   updatePrices();
 }
 
-var frameColors = {
-  'Matte Black': '#111111',
-  'White': '#F0EDE6',
-  'Natural Oak': '#8B5E20',
-  'Light Oak': '#C4A06A'
+var frameStyles = {
+  'Matte Black': {
+    bg: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #111 50%, #2a2a2a 75%, #1a1a1a 100%)',
+    shadow: '2px 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)'
+  },
+  'White': {
+    bg: 'linear-gradient(135deg, #f5f2ed 0%, #fffdf9 30%, #ece8e0 60%, #f8f5ef 100%)',
+    shadow: '2px 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.8)'
+  },
+  'Natural Oak': {
+    bg: 'repeating-linear-gradient(92deg, #7a4f1e 0px, #9b6828 2px, #8a5a22 4px, #b07830 6px, #7a4f1e 8px, #a06525 12px, #8a5a22 14px, #7a4f1e 16px)',
+    shadow: '2px 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)'
+  },
+  'Light Oak': {
+    bg: 'repeating-linear-gradient(92deg, #c4956a 0px, #d4a87c 2px, #c8a070 4px, #e0bc90 6px, #c4956a 8px, #d8b080 12px, #c8a070 14px, #c4956a 16px)',
+    shadow: '2px 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2)'
+  }
 };
 function selFrame(btn, frame) {
   document.querySelectorAll('.frame-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   curFrame = frame;
   document.getElementById('frameLabel').textContent = frame;
-  document.querySelector('.frame-outer').style.borderColor = frameColors[frame];
+  var s = frameStyles[frame];
+  var el = document.querySelector('.frame-outer');
+  el.style.background = s.bg;
+  el.style.boxShadow = s.shadow;
   updatePrices();
 }
 
