@@ -130,7 +130,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 <div class="product">
   <!-- IMAGE -->
   <div class="product-image">
-    <img src="CM105843.jpg" alt="Church of Good Shepherd, Tekapo New Zealand" onclick="document.getElementById('lb').classList.add('open')">
+    <div class="frame-preview" id="framePreview">
+      <div class="frame-outer" id="frameOuter">
+        <div class="mat-border">
+          <img src="CM105843.jpg" alt="Church of Good Shepherd, Tekapo New Zealand" onclick="document.getElementById('lb').classList.add('open')">
+        </div>
+      </div>
+    </div>
     <div class="zoom-hint">🔍 Click to zoom</div>
   </div>
 
@@ -141,6 +147,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
     <p class="product-location">Lake Tekapo, New Zealand</p>
     <div class="product-price" id="displayPrice">from $149</div>
     <div class="product-price-note">Inc. GST · Free shipping Australia-wide</div>
+
+    <!-- FRAME -->
+    <div class="option-label">Frame Finish <span id="frameLabel">Matte Black</span></div>
+    <div class="frame-grid">
+      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#1a1a1a"></div><div class="frame-name">Black</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#f0ede6;border:1px solid #ddd"></div><div class="frame-name">White</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background:#6B2D1A"></div><div class="frame-name">Nat. Oak</div></button>
+      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background:#D4B896"></div><div class="frame-name">Lt. Oak</div></button>
+    </div>
 
     <div class="divider"></div>
 
@@ -171,14 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
       </button>
     </div>
 
-    <!-- FRAME -->
-    <div class="option-label">Frame Finish <span id="frameLabel">Matte Black</span></div>
-    <div class="frame-grid">
-      <button class="frame-btn active" onclick="selFrame(this,'Matte Black')"><div class="frame-swatch" style="background:#1a1a1a"></div><div class="frame-name">Black</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'White')"><div class="frame-swatch" style="background:#f0ede6;border:1px solid #ddd"></div><div class="frame-name">White</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Natural Oak')"><div class="frame-swatch" style="background:#6B2D1A"></div><div class="frame-name">Nat. Oak</div></button>
-      <button class="frame-btn" onclick="selFrame(this,'Light Oak')"><div class="frame-swatch" style="background:#D4B896"></div><div class="frame-name">Lt. Oak</div></button>
-    </div>
+
 
     <div class="order-total">
       <span class="order-total-label">Total (inc. GST)</span>
