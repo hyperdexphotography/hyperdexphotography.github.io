@@ -167,6 +167,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .gallery-item.tall{aspect-ratio:3/4}
 .gallery-item img{width:100%;height:100%;object-fit:contain;transition:transform .4s ease;display:block}
 .gallery-item:hover img{transform:scale(1.05)}
+.gallery-item:hover .gallery-overlay{opacity:1!important}
 .gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
 .gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.25)}
 .gallery-overlay span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:white;opacity:0;transition:opacity .3s}
@@ -435,37 +436,23 @@ footer{border-top:4px solid var(--black);padding:28px 48px;display:flex;flex-wra
   <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title"><strong>The</strong> <em>Collection</em></h2><div class="sec-rule"></div></div>
   <p class="sec-desc">A selection of available prints. Every image is available in any size and paper type. Click to view full size.</p>
 </div>
-<div class="gallery-grid">
-  <div class="gallery-item" onclick="openLightbox(0)"><img src="images/1.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(1)"><img src="images/2.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(2)"><img src="images/3.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(3)"><img src="images/4.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(4)"><img src="images/5.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(5)"><img src="images/6.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(6)"><img src="images/7.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(7)"><img src="images/8.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(8)"><img src="images/9.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(9)"><img src="images/10.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(10)"><img src="images/11.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(11)"><img src="images/12.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(12)"><img src="images/13.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(13)"><img src="images/14.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(14)"><img src="15.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(15)"><img src="images/16.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(16)"><img src="images/17.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(17)"><img src="images/18.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(18)"><img src="images/19.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(19)"><img src="images/20.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(20)"><img src="images/21.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(21)"><img src="images/22.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(22)"><img src="images/23.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(23)"><img src="images/24.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(24)"><img src="images/25.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(25)"><img src="images/26.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(26)"><img src="images/27.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(27)"><img src="images/28.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item" onclick="openLightbox(28)"><img src="images/29.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
-  <div class="gallery-item tall" onclick="openLightbox(29)"><img src="images/30.jpg" alt="Queenstown Landscape"><div class="gallery-overlay"><span>View</span></div></div>
+<div class="gallery-grid" style="grid-template-columns:repeat(2,1fr)">
+  <div class="gallery-item" style="aspect-ratio:3/4;position:relative">
+    <img src="2.jpg" alt="Mt. John Observatory, Tekapo New Zealand" style="width:100%;height:100%;object-fit:contain;background:#f5f5f5">
+    <div class="gallery-overlay" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;opacity:0;transition:opacity .3s">
+      <p style="font-family:var(--serif);font-size:13px;font-weight:700;color:white;margin-bottom:4px">Mt. John Observatory</p>
+      <p style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:10px">Tekapo, New Zealand</p>
+      <a href="order-form.html?image=Mt.+John+Observatory%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" style="display:inline-block;background:white;color:black;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:8px 16px;width:fit-content">Order Now →</a>
+    </div>
+  </div>
+  <div class="gallery-item" style="aspect-ratio:3/4;position:relative">
+    <img src="3.jpg" alt="Church of Good Shepherd, Tekapo New Zealand" style="width:100%;height:100%;object-fit:contain;background:#f5f5f5">
+    <div class="gallery-overlay" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;opacity:0;transition:opacity .3s">
+      <p style="font-family:var(--serif);font-size:13px;font-weight:700;color:white;margin-bottom:4px">Church of Good Shepherd</p>
+      <p style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:10px">Tekapo, New Zealand</p>
+      <a href="order-form.html?image=Church+of+Good+Shepherd%2C+Tekapo+New+Zealand&size=A2&print_type=Framed+Print" target="_blank" style="display:inline-block;background:white;color:black;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:8px 16px;width:fit-content">Order Now →</a>
+    </div>
+  </div>
 </div>
 <div style="text-align:center;padding:28px 24px;background:var(--stone);border-top:1px solid var(--g90)">
   <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--g50);margin-bottom:16px">More images available — message on Facebook to enquire about a specific scene.</p>
